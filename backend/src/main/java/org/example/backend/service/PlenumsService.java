@@ -15,7 +15,9 @@ public class PlenumsService {
     public PlenumsService(PlenumsRepository plenumsRepo){
         this.plenumsRepo = plenumsRepo;
         PlenumsTermin testPlenumstermin = new PlenumsTermin("1", "1.1.2026", Subgroup.WERKSTATT, new String[]{"erster TOP", "zweiter TOP", "dritter TOP"});
+        PlenumsTermin testPlenumstermin2 = new PlenumsTermin("2", "2.2.2026", Subgroup.FEMINISTA, new String[]{"erster TOP", "zweiter TOP", "dritter TOP"});
         plenumsRepo.save(testPlenumstermin);
+        plenumsRepo.save(testPlenumstermin2);
     }
 
     public List<PlenumsTermin> getAll(){
