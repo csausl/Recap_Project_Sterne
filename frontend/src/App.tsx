@@ -40,7 +40,6 @@ function App() {
                     <ul>Tops:
                         {plenum.tops.map(top => (<li>{top}</li>))}
                     </ul>
-
                 </>
       ))}
         </div>
