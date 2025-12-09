@@ -1,10 +1,9 @@
 package org.example.backend.controller;
 
+import org.example.backend.model.dto.PlenumsTerminDto;
 import org.example.backend.model.entity.PlenumsTermin;
 import org.example.backend.service.PlenumsService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -20,6 +19,11 @@ public class SterneController {
     @GetMapping
     public List<PlenumsTermin> getAll(){
         return plenumsService.getAll();
+    }
+
+    @PostMapping()
+    public PlenumsTermin addProduct(@RequestBody PlenumsTerminDto plenumsTerminDto) {
+        return plenumsService.addPlenumsTermin(plenumsTerminDto);
     }
 
 }

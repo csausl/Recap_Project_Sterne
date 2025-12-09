@@ -1,5 +1,6 @@
 package org.example.backend.service;
 
+import org.example.backend.model.dto.PlenumsTerminDto;
 import org.example.backend.model.entity.PlenumsTermin;
 import org.example.backend.respository.PlenumsRepository;
 import org.example.backend.utils.enums.Subgroup;
@@ -11,9 +12,12 @@ import java.util.List;
 public class PlenumsService {
 
     private final PlenumsRepository plenumsRepo;
+    private final IDService idService;
 
-    public PlenumsService(PlenumsRepository plenumsRepo){
+
+    public PlenumsService(PlenumsRepository plenumsRepo, IDService idService) {
         this.plenumsRepo = plenumsRepo;
+        this.idService = idService;
         PlenumsTermin testPlenumstermin = new PlenumsTermin("1", "1.1.2026", Subgroup.WERKSTATT, new String[]{"erster TOP", "zweiter TOP", "dritter TOP"});
         PlenumsTermin testPlenumstermin2 = new PlenumsTermin("2", "2.2.2026", Subgroup.FEMINISTA, new String[]{"erster TOP", "zweiter TOP", "dritter TOP"});
         plenumsRepo.save(testPlenumstermin);
@@ -22,5 +26,20 @@ public class PlenumsService {
 
     public List<PlenumsTermin> getAll(){
         return plenumsRepo.findAll();
+    }
+
+    public PlenumsTermin createPlenumsTerminFromDTO(PlenumsTerminDto plenumsTerminDto) {
+        return PlenumsTermin.builder()
+                .id(idService.createId())
+                .group(plenumsTerminDto.group())
+                .tops(plenumsTerminDto.tops())
+                .date(plenumsTerminDto.date())
+                .build();
+    }
+
+    public PlenumsTermin addPlenumsTermin(PlenumsTerminDto plenumsTerminDto) {
+        PlenumsTermin savePlenumstermin = createPlenumsTerminFromDTO(plenumsTerminDto);
+        plenumsRepo.save(createPlenumsTerminFromDTO(plenumsTerminDto));
+        return savePlenumstermin;
     }
 }
