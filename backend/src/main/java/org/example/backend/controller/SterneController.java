@@ -34,7 +34,7 @@ public class SterneController {
     @PutMapping("/{id}")
     public PlenumsTermin updatePlenumsTermin(@PathVariable String id,
                                              @RequestBody PlenumsTerminDto plenumsTerminDto){
-        return plenumsService.updatePlenumstermin(id);
+        return plenumsService.updatePlenumstermin(id, plenumsTerminDto);
     }
 
 }

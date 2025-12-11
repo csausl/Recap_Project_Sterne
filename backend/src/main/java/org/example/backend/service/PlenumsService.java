@@ -50,7 +50,7 @@ public class PlenumsService {
     }
 
     public PlenumsTermin updatePlenumstermin(String id, PlenumsTerminDto updatePlenumsTerminDto) {
-        PlenumsTermin oldPlenumsTermin = plenumsRepo.findById(id).orElseThrow();
+        PlenumsTermin oldPlenumsTermin = plenumsRepo.findById(id).orElse(null);
         if(oldPlenumsTermin!=null){
             plenumsRepo.save(oldPlenumsTermin
                 .withDate(updatePlenumsTerminDto.date())
