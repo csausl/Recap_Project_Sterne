@@ -1,4 +1,3 @@
-import './App.css'
 import Testpage from "./Pages/Testpage.tsx";
 
 
