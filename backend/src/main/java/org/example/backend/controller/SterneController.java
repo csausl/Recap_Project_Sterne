@@ -26,4 +26,15 @@ public class SterneController {
         return plenumsService.addPlenumsTermin(plenumsTerminDto);
     }
 
+    @DeleteMapping("/{id}")
+    public PlenumsTermin deletePlenumsTermin(@PathVariable String id){
+        return plenumsService.deleteTerminById(id);
+    }
+
+    @PutMapping("/{id}")
+    public PlenumsTermin updatePlenumsTermin(@PathVariable String id,
+                                             @RequestBody PlenumsTerminDto plenumsTerminDto){
+        return plenumsService.updatePlenumstermin(id);
+    }
+
 }

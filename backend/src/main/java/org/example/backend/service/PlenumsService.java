@@ -42,4 +42,21 @@ public class PlenumsService {
         plenumsRepo.save(createPlenumsTerminFromDTO(plenumsTerminDto));
         return savePlenumstermin;
     }
+
+    public PlenumsTermin deleteTerminById(String id){
+        PlenumsTermin deletePlenumsTermin = plenumsRepo.findById(id).orElseThrow();
+        plenumsRepo.deleteById(id);
+        return deletePlenumsTermin;
+    }
+
+    public PlenumsTermin updatePlenumstermin(String id, PlenumsTerminDto updatePlenumsTerminDto) {
+        PlenumsTermin oldPlenumsTermin = plenumsRepo.findById(id).orElseThrow();
+        if(oldPlenumsTermin!=null){
+            plenumsRepo.save(oldPlenumsTermin
+                .withDate(updatePlenumsTerminDto.date())
+                .withGroup(updatePlenumsTerminDto.group())
+                .withTops(updatePlenumsTerminDto.tops()));
+        }
+        return plenumsRepo.findById(id).orElse(null);
+    }
 }
