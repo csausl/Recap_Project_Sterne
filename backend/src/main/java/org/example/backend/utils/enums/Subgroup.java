@@ -4,7 +4,8 @@ public enum Subgroup {
     WERKSTATT ("Werkstatt"),
     FEMINISTA ("Feminista"),
     RSG ("RSG"),
-    RSL ("RSL");
+    RSL ("RSL"),
+    ALLE ("ALLE");
 
     private final String subgroup;
 

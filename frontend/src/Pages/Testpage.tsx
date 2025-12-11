@@ -1,16 +1,17 @@
-import {type ChangeEvent, type FormEvent, useState} from "react";
+import {type ChangeEvent, type FormEvent, useEffect, useState} from "react";
 import axios from "axios";
-import {type Plenumstermin, type PlenumsterminDto, type Subgroup, subgroups} from "../Types/Types.ts";
+import {type PlenumsTermin, type PlenumsTerminDto, type Subgroup, subgroups} from "../Types/Types.ts";
+import PlenumsCard from "../Components/PlenumsCard.tsx";
 
 
 export default function Testpage() {
-    const [plenumsterminDto, setPlenumsterminDto] = useState<PlenumsterminDto>()
+    const [plenumsTerminDto, setPlenumsTerminDto] = useState<PlenumsTerminDto>()
     const [plenumDate, setPlenumDate] = useState<string>("");
-    const [plenumGroup, setPlenumGroup] = useState<Subgroup>();
+    const [plenumGroup, setPlenumGroup] = useState<Subgroup>("ALLE");
     const [plenumFirstTop, setPlenumFirstTop] = useState<string>("");
     const [plenumSecondTop, setPlenumSecondTop] = useState<string>("");
     const [plenumThirdTop, setPlenumThirdTop] = useState<string>("");
-    const [plena, setPlena] = useState<Plenumstermin[]>([]);
+    const [plena, setPlena] = useState<PlenumsTermin[]>([]);
 
     function getAllPlena(){
         axios.get("/api/plena").then((response) => {
@@ -25,26 +26,41 @@ export default function Testpage() {
 
     function handleSubmit(event:FormEvent<HTMLFormElement>) {
         event.preventDefault();
-        setPlenumsterminDto({date: plenumDate, group: plenumGroup, tops: [plenumFirstTop,plenumSecondTop,plenumThirdTop]});
+        console.log(plenumsTerminDto, plenumDate, plenumGroup, plenumFirstTop, plenumSecondTop);
+        setPlenumsTerminDto({date: plenumDate, group: plenumGroup, tops: [plenumFirstTop,plenumSecondTop,plenumThirdTop]});
+        console.log(plenumsTerminDto);
+        addNewPlenumstermin();
     }
 
     const handleChange = (event:ChangeEvent<HTMLSelectElement>) => {
         setPlenumGroup(event.target.value as Subgroup);
+        console.log(plenumGroup);
     };
 
     function resetForm() {
         setPlenumDate("");
-        setPlenumGroup(undefined);
+        setPlenumGroup("ALLE");
         setPlenumFirstTop("");
         setPlenumSecondTop("");
         setPlenumThirdTop("");
     }
 
     function addNewPlenumstermin(){
-        axios.post("/api/plena",
-            plenumsterminDto)
-            .then(response => {console.log(response.data);})
+        if(plenumsTerminDto){
+            axios.post("/api/plena",
+                plenumsTerminDto)
+                .then(response => {console.log(response.data);})
+                .then(getAllPlena)
+                .then(resetForm)
+        }
+
     }
+
+    useEffect(() => {
+        getAllPlena();
+        //console.log(plenumsTerminDto);
+        //addNewPlenumstermin();
+    },[])
 
     return (
         <>
@@ -84,7 +100,7 @@ export default function Testpage() {
                         value={plenumGroup}
                         onChange={handleChange}>
                         {subgroups.map((category) => (
-                            <option value={category.value} key={category.value}>{category.label} </option>
+                            <option value={category.value} key={category.value}>{category.label}</option>
                         ))}
                     </select>
                     </label>
@@ -98,15 +114,10 @@ export default function Testpage() {
                 <button onClick={clear}>clear!</button>
                 <div>
                     {plena.map((plenum) => (
-                        <div className={"plenumsCard"}>
-                            <p>id: {plenum.id}</p>
-                            <p>date: {plenum.date}</p>
-                            <p>group: {plenum.group}</p>
-                            <ul>Tops:
-                                {plenum.tops.map(top => (<li>{top}</li>))}
-                            </ul>
-                        </div>
-                    ))}
+                        <PlenumsCard plenum={plenum} onTerminChange={getAllPlena} key={plenum.id}/>
+                        ))
+
+                    }
                 </div>
             </div>
         </div>

@@ -1,20 +1,21 @@
 
-export type Subgroup ="WERKSTATT" | "FEMINISTA" | "RSG"|"RSL"|undefined
+export type Subgroup ="ALLE" |"WERKSTATT" | "FEMINISTA" | "RSG" | "RSL" |  undefined
 
-export type PlenumsterminDto={
+export type PlenumsTerminDto={
     date: string,
     group: Subgroup
     tops: string[]
 }
-export type Plenumstermin={
+export type PlenumsTermin={
     id: string,
     date: string,
     group: Subgroup
     tops: string[]
 }
 export const subgroups = [
-    { label: 'WERKSTATT', value: 'WERKSTATT' },
-    { label: 'FEMINISTA', value: 'FEMINISTA' },
+    { label: 'Alle', value: 'ALLE' },
+    { label: 'Feminista', value: 'FEMINISTA' },
     { label: 'RSL', value: 'RSL' },
     { label: 'RSG', value: 'RSG' },
+    { label: 'Werkstatt', value: 'WERKSTATT' },
 ];
