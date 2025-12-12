@@ -1,13 +1,8 @@
-import Testpage from "./Pages/Testpage.tsx";
-
 
 function App() {
-
-
-
   return (
     <>
-        <Testpage/>
+        <h1>Hallo</h1>
     </>
   )
 }
