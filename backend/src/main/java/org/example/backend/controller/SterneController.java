@@ -22,7 +22,7 @@ public class SterneController {
     }
 
     @PostMapping()
-    public PlenumsTermin addProduct(@RequestBody PlenumsTerminDto plenumsTerminDto) {
+    public PlenumsTermin addPlenumsTermin(@RequestBody PlenumsTerminDto plenumsTerminDto) {
         return plenumsService.addPlenumsTermin(plenumsTerminDto);
     }
 
