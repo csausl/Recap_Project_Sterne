@@ -20,4 +20,20 @@ public record PlenumsTermin(
     public int hashCode() {
         return Objects.hash(id, date, group, Arrays.hashCode(tops));
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        PlenumsTermin termin = (PlenumsTermin) o;
+        return Objects.equals(id, termin.id) && Objects.equals(date, termin.date) && Objects.equals(group, termin.group) && Arrays.equals(tops, termin.tops);
+    }
+
+    @Override
+    public String toString() {
+        return "Termin: "+
+                "id:"+id+
+                "date:"+date+
+                "group:"+group+
+                "tops:"+Arrays.toString(tops);
+    }
 }
