@@ -87,14 +87,13 @@ class PlenumsServiceTest {
         PlenumsService mockPlenumsService=new PlenumsService(mockPlenumsRepo,mockIDService);
 
         when(mockPlenumsRepo.findById(mockID)).thenReturn(Optional.of(mockTermin));
-        //when(mockPlenumsService.deleteTerminById(mockID)).thenReturn(mockTermin);
+
         //WHEN
         Optional<PlenumsTermin> actualTermin=Optional.of(mockPlenumsService.deleteTerminById(mockID));
 
 
         //THEN
         assertEquals(Optional.of(mockTermin),actualTermin);
-        //verify(mockPlenumsRepo).findById(mockID);
         verify(mockPlenumsRepo).deleteById(mockID);
     }
 

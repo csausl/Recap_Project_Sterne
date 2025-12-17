@@ -3,7 +3,6 @@ package org.example.backend.service;
 import org.example.backend.model.dto.PlenumsTerminDto;
 import org.example.backend.model.entity.PlenumsTermin;
 import org.example.backend.respository.PlenumsRepository;
-import org.example.backend.utils.enums.Subgroup;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -18,10 +17,6 @@ public class PlenumsService {
     public PlenumsService(PlenumsRepository plenumsRepo, IDService idService) {
         this.plenumsRepo = plenumsRepo;
         this.idService = idService;
-        PlenumsTermin testPlenumstermin = new PlenumsTermin("1", "1.1.2026", Subgroup.WERKSTATT, new String[]{"erster TOP", "zweiter TOP", "dritter TOP"});
-        PlenumsTermin testPlenumstermin2 = new PlenumsTermin("2", "2.2.2026", Subgroup.FEMINISTA, new String[]{"erster TOP", "zweiter TOP", "dritter TOP"});
-       // plenumsRepo.save(testPlenumstermin);
-       // plenumsRepo.save(testPlenumstermin2);
     }
 
     public List<PlenumsTermin> getAll(){

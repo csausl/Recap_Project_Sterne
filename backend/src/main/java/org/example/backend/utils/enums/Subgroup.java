@@ -7,13 +7,13 @@ public enum Subgroup {
     RSL ("RSL"),
     ALLE ("ALLE");
 
-    private final String subgroup;
+    private final String group;
 
-    Subgroup(String subgroup) {
-        this.subgroup = subgroup;
+    Subgroup(String group) {
+        this.group = group;
     }
 
     public String getSubgroup() {
-        return subgroup;
+        return group;
     }
 }
