@@ -35,11 +35,12 @@ public class PlenumsService {
                 .tops(plenumsTerminDto.tops())
                 .date(plenumsTerminDto.date())
                 .build();
+
     }
 
     public PlenumsTermin addPlenumsTermin(PlenumsTerminDto plenumsTerminDto) {
         PlenumsTermin savePlenumstermin = createPlenumsTerminFromDTO(plenumsTerminDto);
-        plenumsRepo.save(createPlenumsTerminFromDTO(plenumsTerminDto));
+        plenumsRepo.save(savePlenumstermin);
         return savePlenumstermin;
     }
 
