@@ -1,6 +1,4 @@
 package org.example.backend.model.dto;
-
-import org.example.backend.model.entity.PlenumsTermin;
 import org.example.backend.utils.enums.Subgroup;
 import org.junit.jupiter.api.Test;
 
@@ -22,9 +20,10 @@ class PlenumsTerminDtoTest {
 
     @Test
     void testEquals() {
-        PlenumsTerminDto test=new PlenumsTerminDto("1.1.1111", Subgroup.WERKSTATT, new String[]{"1","2","3"});
-        assertTrue(test.equals(new PlenumsTerminDto("1.1.1111", Subgroup.WERKSTATT, new String[]{"1","2","3"})));
-
+        PlenumsTerminDto test1=new PlenumsTerminDto("1.1.1111", Subgroup.WERKSTATT, new String[]{"1","2","3"});
+        PlenumsTerminDto test2=new PlenumsTerminDto("1.1.1111", Subgroup.WERKSTATT, new String[]{"1","2","3"});
+        boolean wellIsIt=test1.equals(test2);
+        assertTrue(wellIsIt);
     }
 
     @Test

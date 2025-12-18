@@ -22,8 +22,10 @@ class PlenumsTerminTest {
 
     @Test
     void testEquals() {
-        PlenumsTermin test=new PlenumsTermin("1","1.1.1111", Subgroup.WERKSTATT, new String[]{"1","2","3"});
-        assertTrue(test.equals(new PlenumsTermin("1","1.1.1111", Subgroup.WERKSTATT, new String[]{"1","2","3"})));
+        PlenumsTermin test1=new PlenumsTermin("1","1.1.1111", Subgroup.WERKSTATT, new String[]{"1","2","3"});
+        PlenumsTermin test2=new PlenumsTermin("1","1.1.1111", Subgroup.WERKSTATT, new String[]{"1","2","3"});
+        boolean wellIsIt=test1.equals(test2);
+        assertTrue(wellIsIt);
     }
 
     @Test
