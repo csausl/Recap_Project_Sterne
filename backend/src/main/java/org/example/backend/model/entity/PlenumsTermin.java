@@ -30,7 +30,7 @@ public record PlenumsTermin(
 
     @Override
     public String toString() {
-        return "Termin: "+
+        return "Termin:"+
                 "id:"+id+
                 "date:"+date+
                 "group:"+group+
