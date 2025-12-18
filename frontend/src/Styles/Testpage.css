@@ -1,0 +1,37 @@
+.topBar{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    border: forestgreen 2px solid;
+}
+
+.mainContainer{
+    display: flex;
+    border: darkred 2px solid;
+
+}
+
+.plenumsForm{
+    display: flex;
+    flex-direction: column;
+    border: darkslategray 1px solid;
+    margin: 5px;
+    padding: 5px;
+}
+
+.rightContainer{
+    display: flex;
+    flex-direction: column;
+    border: darkslategray 1px solid;
+    margin: 5px;
+    padding: 5px;
+}
+
+.plenumsCard{
+    display: flex;
+    flex-direction: column;
+    border: blueviolet 1px solid;
+    padding: 5px;
+    margin: 5px;
+}
