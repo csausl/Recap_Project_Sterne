@@ -8,7 +8,7 @@ type PlenumsCardProps={
 
 
 
-export default function PlenumsCard(props:PlenumsCardProps) {
+export default function PlenumsCard(props:Readonly<PlenumsCardProps>) {
     function deleteThisItem() {
         axios.delete("/api/plena/" + props.plenum.id)
             .then(res => {console.log(res.data)})
@@ -16,7 +16,7 @@ export default function PlenumsCard(props:PlenumsCardProps) {
     }
 
     return (
-        <>
+
                 <div className={"plenumsCard"} key={props.plenum.id}>
                     <p>id: {props.plenum.id}</p>
                     <p>date: {props.plenum.date}</p>
@@ -26,7 +26,6 @@ export default function PlenumsCard(props:PlenumsCardProps) {
                     </ul>
                     <button onClick={deleteThisItem}>Delete!</button>
                 </div>
-        </>
     )
 }
 

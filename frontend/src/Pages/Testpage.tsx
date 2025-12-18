@@ -24,8 +24,6 @@ export default function Testpage() {
 
     useEffect(() => {
         getAllPlena();
-        //console.log(plenumsTerminDto);
-        //addNewPlenumstermin();
     },[])
 
     return (

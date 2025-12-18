@@ -12,10 +12,7 @@ export default function AddPlenumsTerminCard() {
 
     function handleSubmit(event:FormEvent<HTMLFormElement>) {
         event.preventDefault();
-        //console.log(plenumsTerminDto, plenumDate, plenumGroup, plenumFirstTop, plenumSecondTop);
         setPlenumsTerminDto({date: plenumDate, group: plenumGroup, tops: [plenumFirstTop,plenumSecondTop,plenumThirdTop]});
-        //setPlenumsTerminDto({date: "Test", group: "FEMINISTA", tops: ["top1","Top2","Top3"]});
-       // console.log(plenumsTerminDto);
     }
 
     const handleChange = (event:ChangeEvent<HTMLSelectElement>) => {
@@ -43,7 +40,6 @@ export default function AddPlenumsTerminCard() {
         console.log(plenumsTerminDto);
     }, [plenumsTerminDto]);
     return (
-        <>
             <form className={"plenumsForm"} onSubmit={handleSubmit}>
                 <label>Date:<input
                     name={"Date"}
@@ -81,6 +77,5 @@ export default function AddPlenumsTerminCard() {
                 <button type="submit">Submit</button>
                 <button type="reset" onClick={resetForm}>Reset</button>
             </form>
-        </>
     )
 }
