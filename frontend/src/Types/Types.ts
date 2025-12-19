@@ -2,13 +2,13 @@
 export type Subgroup ="ALLE" |"WERKSTATT" | "FEMINISTA" | "RSG" | "RSL" |  undefined
 
 export type PlenumsTerminDto={
-    date: string,
+    date: Date,
     group: Subgroup
     tops: string[]
 }
 export type PlenumsTermin={
     id: string,
-    date: string,
+    date: Date,
     group: Subgroup
     tops: string[]
 }
