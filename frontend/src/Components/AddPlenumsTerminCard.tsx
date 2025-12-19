@@ -69,7 +69,6 @@ export default function AddPlenumsTerminCard() {
                 <label>Gruppe:<select
                     required={true}
                     onChange={handleChange}>
-
                     <option value="">please choose</option>
                     {subgroups.map((category) => (
                         <option value={category.value} key={category.value}>{category.label}</option>
