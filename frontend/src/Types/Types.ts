@@ -1,8 +1,8 @@
 
-export type Subgroup ="ALLE" |"WERKSTATT" | "FEMINISTA" | "RSG" | "RSL" |  undefined
+export type Subgroup ="ALLE" |"WERKSTATT" | "FEMINISTA" | "RSG" | "RSL" | "" | undefined
 
 export type PlenumsTerminDto={
-    date: Date,
+    date: String,
     group: Subgroup
     tops: string[]
 }
