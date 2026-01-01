@@ -2,7 +2,7 @@
 export type Subgroup ="ALLE" |"WERKSTATT" | "FEMINISTA" | "RSG" | "RSL" | "" | undefined
 
 export type PlenumsTerminDto={
-    date: String,
+    date: string,
     group: Subgroup
     tops: string[]
 }
