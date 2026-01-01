@@ -3,7 +3,6 @@ import {type PlenumsTerminDto, type Subgroup, subgroups} from "../Types/Types.ts
 import axios from "axios";
 
 export default function AddPlenumsTerminCard() {
-    const [plenumDate, setPlenumDate] = useState<Date>(new Date(""));
     const [plenumDateString, setPlenumDateString] = useState<string>("");
     const [plenumGroup, setPlenumGroup] = useState<Subgroup>(undefined);
     const [plenumFirstTop, setPlenumFirstTop] = useState<string>("");
@@ -12,19 +11,12 @@ export default function AddPlenumsTerminCard() {
     const [plenumsTerminDto, setPlenumsTerminDto] = useState<PlenumsTerminDto>()
 
     function handleSubmit(event:FormEvent<HTMLFormElement>) {
+        console.log("submit runs");
         event.preventDefault();
-        convertDateToString(plenumDate);
         setPlenumsTerminDto({date: plenumDateString, group: plenumGroup, tops: [plenumFirstTop,plenumSecondTop,plenumThirdTop]});
         resetForm();
     }
 
-    function convertDateToString(date: Date){
-        // Zielformat:"dd.MM.yyyy" oder "dd.MM.yyyy : HH:mm:ss"
-        //const dateString = date.toLocaleDateString("en-US");
-        const dateString = date.toLocaleDateString("de-EU");
-        //console.log(dateString);
-        setPlenumDateString(dateString);
-    }
 
     const handleChange = (event:ChangeEvent<HTMLSelectElement>) => {
         setPlenumGroup(event.target.value as Subgroup);
@@ -32,7 +24,6 @@ export default function AddPlenumsTerminCard() {
 
     function resetForm() {
         console.log("reset form");
-        setPlenumDate(new Date(""));
         setPlenumDateString("")
         setPlenumGroup("");
         setPlenumFirstTop("");
@@ -41,24 +32,29 @@ export default function AddPlenumsTerminCard() {
     }
 
     function addNewPlenumstermin(){
-        axios.post("/api/plena",
-            plenumsTerminDto)
-            .then(response => {console.log(response.data);})
-            //.then(resetForm)
+        console.log("posting addNewPlenumstermin");
+           if(plenumsTerminDto) {
+               axios.post("/api/plena",
+                   plenumsTerminDto)
+                   .then(response => {
+                       console.log(response.data);
+                   })
+           }
+
     }
 
     useEffect(() => {
         addNewPlenumstermin();
-        //console.log("raw: " ,plenumDate, plenumGroup, plenumFirstTop, plenumSecondTop);
-        //console.log(plenumsTerminDto);
-        //resetForm();
     }, [plenumsTerminDto]);
     return (
             <form className={"plenumsForm"} onSubmit={handleSubmit}>
                 <label>Date:<input
                     //value={plenumDate}
                     type="date"
-                    onChange={(e) => setPlenumDate((new Date(e.target.value)))}
+                    onChange={(e) =>{
+                        const dateString = (new Date(e.target.value)).toLocaleDateString("de-EU");
+                        setPlenumDateString(dateString);}
+                    }
                     min="2025-01-01"
                     max="2050-12-31"
                     required={true}/>
