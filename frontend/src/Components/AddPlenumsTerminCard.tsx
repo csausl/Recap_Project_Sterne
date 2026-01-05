@@ -11,7 +11,6 @@ export default function AddPlenumsTerminCard() {
     const [plenumsTerminDto, setPlenumsTerminDto] = useState<PlenumsTerminDto>()
 
     function handleSubmit(event:FormEvent<HTMLFormElement>) {
-        console.log("submit runs");
         event.preventDefault();
         setPlenumsTerminDto({date: plenumDateString, group: plenumGroup, tops: [plenumFirstTop,plenumSecondTop,plenumThirdTop]});
         resetForm();
@@ -23,7 +22,6 @@ export default function AddPlenumsTerminCard() {
     };
 
     function resetForm() {
-        console.log("reset form");
         setPlenumDateString("")
         setPlenumGroup("");
         setPlenumFirstTop("");
@@ -32,7 +30,6 @@ export default function AddPlenumsTerminCard() {
     }
 
     function addNewPlenumstermin(){
-        console.log("posting addNewPlenumstermin");
            if(plenumsTerminDto) {
                axios.post("/api/plena",
                    plenumsTerminDto)
