@@ -4,9 +4,10 @@ import {type PlenumsTermin} from "../Types/Types.ts";
 import PlenumsCard from "../Components/PlenumsCard.tsx";
 
 import AddPlenumsTerminCard from "../Components/AddPlenumsTerminCard.tsx";
+import {Link} from "react-router-dom";
 
 
-export default function Testpage() {
+export default function Plena() {
 
     const [plena, setPlena] = useState<PlenumsTermin[]>([]);
 
@@ -19,7 +20,6 @@ export default function Testpage() {
             console.log(response.data);
             setPlena(response.data);
         })
-
     }
 
     useEffect(() => {
@@ -29,7 +29,7 @@ export default function Testpage() {
     return (
         <>
         <div className={"topBar"}>
-            <button className={"backbutton"}>back</button>
+            <Link to={"/"}><button className={"backbutton"}>Home</button></Link>
             <h1 className={"pageName"}>Seite</h1>
             <button className={"logoutButton"}>logout</button>
         </div>

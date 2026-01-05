@@ -8,7 +8,7 @@ export type PlenumsTerminDto={
 }
 export type PlenumsTermin={
     id: string,
-    date: Date,
+    date: string,
     group: Subgroup
     tops: string[]
 }
