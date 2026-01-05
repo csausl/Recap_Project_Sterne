@@ -3,7 +3,6 @@ import {Link} from "react-router-dom";
 export default function LandingPage(){
 
     return (
-        <>
             <ul className="flex-container">
                 <Link to={"/Infos"}><li className="flex-item">Infos</li></Link>
                 <Link to={"/Plena"}><li className="flex-item">Plena</li></Link>
@@ -14,6 +13,5 @@ export default function LandingPage(){
                 <Link to={"/Users"}><li className="flex-item">Users</li></Link>
                 <Link to={"/Admin"}><li className="flex-item">Admin</li></Link>
             </ul>
-        </>
     )
 }
