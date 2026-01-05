@@ -20,7 +20,6 @@ export default function Plena() {
             console.log(response.data);
             setPlena(response.data);
         })
-
     }
 
     useEffect(() => {

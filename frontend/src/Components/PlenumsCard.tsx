@@ -16,7 +16,6 @@ export default function PlenumsCard(props:Readonly<PlenumsCardProps>) {
     }
 
     return (
-
                 <div className={"plenumsCard"} key={props.plenum.id}>
                     <p>id: {props.plenum.id}</p>
                     <p>date: {props.plenum.date}</p>

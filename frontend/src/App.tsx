@@ -16,6 +16,7 @@ function App() {
 
   return (
     <>
+        <header><title>Sterne</title></header>
         <Routes>
             <Route path="/" element={<LandingPage/>}/>
             <Route path={"/Infos"} element={<Infos/>}/>
