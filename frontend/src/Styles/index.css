@@ -5,3 +5,16 @@
 a {
     text-decoration: none;
 }
+
+button {
+    background-color: darkred;
+    color: white;
+
+    border-radius: 8px;
+    border: 1px solid black;
+}
+
+button:hover{
+    background: indianred;
+    box-shadow: 1px 1px 5px 1px black;
+}
