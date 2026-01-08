@@ -24,7 +24,7 @@ export default function Plena() {
         <>
         <div className={"topBar"}>
             <Link to={"/"}><button className={"backbutton"}>Home</button></Link>
-            <h1 className={"pageName"}>Plena</h1>
+            <h1 className={"pageName"}></h1>
             <button className={"logoutButton"}>logout</button>
         </div>
         <div className={"mainContainer"}>
@@ -36,9 +36,7 @@ export default function Plena() {
                 <div>
                     {!plena ? <div>LOADING..</div> : plena.map((plenum) => (
                             <Link to={`/Plena/${plenum.id}`} key={plenum.id} >
-                                <div className={"plenumsCardLight"} >
                                     <PlenumsCardLight plenum={plenum}/>
-                                </div>
                             </Link>
                         ))
                     }
