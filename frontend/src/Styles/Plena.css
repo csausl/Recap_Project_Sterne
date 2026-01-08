@@ -3,19 +3,24 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    border: forestgreen 2px solid;
+
 }
 
 .mainContainer{
     display: flex;
-    border: darkred 2px solid;
-
 }
 
 .plenumsForm{
     display: flex;
     flex-direction: column;
-    border: darkslategray 1px solid;
+
+    margin: 5px;
+    padding: 5px;
+}
+.leftContainer{
+    display: flex;
+    flex-direction: column;
+
     margin: 5px;
     padding: 5px;
 }
@@ -23,15 +28,52 @@
 .rightContainer{
     display: flex;
     flex-direction: column;
-    border: darkslategray 1px solid;
+
     margin: 5px;
     padding: 5px;
 }
 
-.plenumsCard{
-    display: flex;
-    flex-direction: column;
-    border: blueviolet 1px solid;
+.plenumsCardLight{
+    background: darkred;
+
+    width: 200px;
     padding: 5px;
-    margin: 5px;
+    height: 150px;
+    margin-top: 10px;
+    color: white;
+    text-decoration: none !important;
+    text-align: center;
+
+    border-radius: 25px;
+    border: 2px solid black;
+
+    box-shadow: 2px 2px 10px 2px darkgrey;
+}
+
+.plenumsCardLight:hover {
+    background: indianred;
+    box-shadow: 5px 5px 15px 5px black;
+}
+
+
+
+.flex-item {
+
+    background: darkred;
+    padding: 5px;
+    width: 200px;
+    height: 150px;
+    margin-top: 10px;
+    line-height: 150px;
+    color: white;
+    font-weight: bold;
+    font-size: 3em;
+    text-align: center;
+    text-decoration: none;
+
+
+    border-radius: 25px;
+    border: 2px solid black;
+
+    box-shadow: 5px 5px 15px 5px darkgrey;
 }
