@@ -1,19 +1,13 @@
 import {useEffect, useState} from "react";
 import axios from "axios";
 import {type PlenumsTermin} from "../Types/Types.ts";
-import PlenumsCard from "../Components/PlenumsCard.tsx";
-
-import AddPlenumsTerminCard from "../Components/AddPlenumsTerminCard.tsx";
 import {Link} from "react-router-dom";
+import PlenumsCardLight from "../Components/PlenumsCardLight.tsx";
 
 
 export default function Plena() {
 
     const [plena, setPlena] = useState<PlenumsTermin[]>([]);
-
-    function clear(){
-        setPlena([])
-    }
 
     function getAllPlena(){
         axios.get("/api/plena").then((response) => {
@@ -30,22 +24,23 @@ export default function Plena() {
         <>
         <div className={"topBar"}>
             <Link to={"/"}><button className={"backbutton"}>Home</button></Link>
-            <h1 className={"pageName"}>Seite</h1>
+            <h1 className={"pageName"}>Plena</h1>
             <button className={"logoutButton"}>logout</button>
         </div>
         <div className={"mainContainer"}>
             <div className={"leftContainer"}>
-                <AddPlenumsTerminCard/>
-
+                <Link to={"/Plena/add"}><div className={"flex-item"}>Add</div></Link>
+                <div className={"flex-item"} onClick={getAllPlena}>Get All!</div>
             </div>
             <div className={"rightContainer"}>
-                <button onClick={getAllPlena}>Get All!</button>
-                <button onClick={clear}>clear!</button>
                 <div>
-                    {plena.map((plenum) => (
-                        <PlenumsCard plenum={plenum} onTerminChange={getAllPlena} key={plenum.id}/>
+                    {!plena ? <div>LOADING..</div> : plena.map((plenum) => (
+                            <Link to={`/Plena/${plenum.id}`} key={plenum.id} >
+                                <div className={"plenumsCardLight"} >
+                                    <PlenumsCardLight plenum={plenum}/>
+                                </div>
+                            </Link>
                         ))
-
                     }
                 </div>
             </div>
