@@ -50,6 +50,7 @@ export default function AddPlenumsTerminCard() {
         }
 
     }, [plenumsTerminDto]);
+
     return (
             <form className={"plenumsForm"} onSubmit={handleSubmit}>
                 <label>Date:<input
@@ -57,6 +58,7 @@ export default function AddPlenumsTerminCard() {
                     type="date"
                     onChange={(e) =>{
                         const dateString = (new Date(e.target.value)).toLocaleDateString("de-EU");
+                        console.log(dateString);
                         setPlenumDateString(dateString);}
                     }
                     min="2025-01-01"
