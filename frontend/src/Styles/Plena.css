@@ -1,13 +1,15 @@
 .topBar{
     display: flex;
     flex-direction: row;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
-
 }
 
 .mainContainer{
     display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: start;
 }
 
 .plenumsForm{
