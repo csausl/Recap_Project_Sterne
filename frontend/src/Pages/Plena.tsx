@@ -38,7 +38,6 @@ export default function Plena() {
                 </div>
                 <div className={"rightContainer"}>
                     <Link to={"/Plena/add"}><div className={"flex-item"}>Add</div></Link>
-                    <div className={"flex-item"} onClick={getAllPlena}>Get All!</div>
                 </div>
 
             </div>
