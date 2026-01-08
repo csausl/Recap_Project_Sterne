@@ -35,7 +35,7 @@ export default function LandingPage(){
 
     return (
         <>
-
+            <header className={"topBar"} ><h1>Du bist mein Stern</h1></header>
 
 
             <ul className="flex-container">
