@@ -69,6 +69,7 @@ export default function LandingPage(){
 
             <div id="myDIV">
                 This is my DIV element.
+                <button onClick={myFunction}>Info Popup</button>
             </div>
         </>
     )
