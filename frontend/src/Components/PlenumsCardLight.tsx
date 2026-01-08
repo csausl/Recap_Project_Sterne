@@ -8,7 +8,7 @@ type PlenumsCardLightProps={
 
 export default function PlenumsCardLight(props:Readonly<PlenumsCardLightProps>) {
    return (
-                <div className={"plenumsCard"} key={props.plenum.id}>
+                <div className={"plenumsCardLight"} key={props.plenum.id}>
                     <p>{props.plenum.group}</p>
                     <p>{props.plenum.date}</p>
                 </div>
