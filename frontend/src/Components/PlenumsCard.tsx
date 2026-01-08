@@ -3,7 +3,8 @@ import axios from "axios";
 import {useNavigate} from "react-router-dom";
 
 type PlenumsCardProps={
-    plenum:PlenumsTermin
+    plenum:PlenumsTermin,
+    updateToggle:()=>void
 }
 
 export default function PlenumsCard(props:Readonly<PlenumsCardProps>) {
@@ -21,10 +22,6 @@ export default function PlenumsCard(props:Readonly<PlenumsCardProps>) {
         }
     }
 
-    function updateItem(){
-
-    }
-
     return (
                 <div className={"plenumsCard"} key={props.plenum.id}>
                     <p>{props.plenum.group}</p>
@@ -33,7 +30,7 @@ export default function PlenumsCard(props:Readonly<PlenumsCardProps>) {
                         {props.plenum.tops.map((top,index) => (<li key={index}>{top}</li>))}
                     </ul>
                     <button onClick={confirmDelete}>Delete!</button>
-                    <button onClick={updateItem}>Update!</button>
+                    <button onClick={props.updateToggle}>Update!</button>
                 </div>
     )
 }
