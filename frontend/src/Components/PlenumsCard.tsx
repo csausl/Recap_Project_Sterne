@@ -21,6 +21,10 @@ export default function PlenumsCard(props:Readonly<PlenumsCardProps>) {
         }
     }
 
+    function updateItem(){
+
+    }
+
     return (
                 <div className={"plenumsCard"} key={props.plenum.id}>
                     <p>{props.plenum.group}</p>
@@ -29,6 +33,7 @@ export default function PlenumsCard(props:Readonly<PlenumsCardProps>) {
                         {props.plenum.tops.map((top,index) => (<li key={index}>{top}</li>))}
                     </ul>
                     <button onClick={confirmDelete}>Delete!</button>
+                    <button onClick={updateItem}>Update!</button>
                 </div>
     )
 }
