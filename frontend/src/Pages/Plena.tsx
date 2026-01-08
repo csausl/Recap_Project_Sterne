@@ -3,6 +3,7 @@ import axios from "axios";
 import {type PlenumsTermin} from "../Types/Types.ts";
 import {Link} from "react-router-dom";
 import PlenumsCardLight from "../Components/PlenumsCardLight.tsx";
+import Navbar from "../Components/Navbar.tsx";
 
 
 export default function Plena() {
@@ -22,27 +23,25 @@ export default function Plena() {
 
     return (
         <>
-        <div className={"topBar"}>
-            <Link to={"/"}><button className={"backbutton"}>Home</button></Link>
-            <h1 className={"pageName"}></h1>
-            <button className={"logoutButton"}>logout</button>
-        </div>
-        <div className={"mainContainer"}>
-            <div className={"leftContainer"}>
-                <Link to={"/Plena/add"}><div className={"flex-item"}>Add</div></Link>
-                <div className={"flex-item"} onClick={getAllPlena}>Get All!</div>
-            </div>
-            <div className={"rightContainer"}>
-                <div>
-                    {!plena ? <div>LOADING..</div> : plena.map((plenum) => (
+            <header className={"topBar"}><Navbar/></header>
+
+            <div className={"mainContainer"}>
+                <div className={"leftContainer"}>
+                    <div>
+                        {!plena ? <div>LOADING..</div> : plena.map((plenum) => (
                             <Link to={`/Plena/${plenum.id}`} key={plenum.id} >
-                                    <PlenumsCardLight plenum={plenum}/>
+                                <PlenumsCardLight plenum={plenum}/>
                             </Link>
                         ))
-                    }
+                        }
+                    </div>
                 </div>
+                <div className={"rightContainer"}>
+                    <Link to={"/Plena/add"}><div className={"flex-item"}>Add</div></Link>
+                    <div className={"flex-item"} onClick={getAllPlena}>Get All!</div>
+                </div>
+
             </div>
-        </div>
         </>
     )
 }
