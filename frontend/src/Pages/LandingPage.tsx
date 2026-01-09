@@ -1,36 +1,36 @@
 import {Link} from "react-router-dom";
+function myFunction() {
+    alert("whooohooo!");
+}
 
-export default function LandingPage(){
-    function myFunction() {
-        alert("whooohooo!");
+function myFunction2() {
+    let txt;
+    if (confirm("Press a button!")) {
+        txt = "<button onClick={myFunction} >You pressed OK!</button>";
+    } else {
+        txt = "You pressed Cancel!";
+    }
+    if(document != null){
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-expect-error
+        document.getElementById("demo").innerHTML = txt;
     }
 
-    function myFunction2() {
-        let txt;
-        if (confirm("Press a button!")) {
-            txt = "<button onClick={myFunction} >You pressed OK!</button>";
+}
+function myFunction4() {
+    const x = document.getElementById("myDIV");
+    if(x!=null){
+        if (x.style.display === "block") {
+            x.style.display = "none";
         } else {
-            txt = "You pressed Cancel!";
+            x.style.display = "block";
         }
-        if(document != null){
-            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-            // @ts-expect-error
-            document.getElementById("demo").innerHTML = txt;
-        }
-
     }
-    function myFunction4() {
-        const x = document.getElementById("myDIV");
-        if(x!=null){
-            if (x.style.display === "block") {
-                x.style.display = "none";
-            } else {
-                x.style.display = "block";
-            }
-        }
 
 
-    }
+}
+export default function LandingPage(){
+
 
 
     return (
@@ -68,8 +68,7 @@ export default function LandingPage(){
             <button onClick={myFunction4}>Click Me</button>
 
             <div id="myDIV">
-                This is my DIV element.
-                <button onClick={myFunction}>Info Popup</button>
+                <button onClick={myFunction}>myDiv Info Popup</button>
             </div>
         </>
     )

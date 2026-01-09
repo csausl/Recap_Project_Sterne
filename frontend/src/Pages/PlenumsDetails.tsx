@@ -7,8 +7,18 @@ import axios from "axios";
 import Navbar from "../Components/Navbar.tsx";
 import AddPlenumsTerminCard from "../Components/PlenumUpdateForm.tsx";
 
+function updateToggle() {
+    const x = document.getElementById("updateDiv");
+    if(x!=null){
+        if (x.style.display === "block") {
+            x.style.display = "none";
+        } else {
+            x.style.display = "block";
+        }
+    }
+}
+
 export default function PlenumsDetails() {
-    //const beispielTermin:PlenumsTermin={id:"1",date:"1.1.2011",group:"ALLE",tops:["","",""]};
     const parameter = useParams();
     const [plenum,setPlenum]=useState<PlenumsTermin>();
 
@@ -21,17 +31,6 @@ export default function PlenumsDetails() {
         )
     }
 
-    function updateToggle() {
-        const x = document.getElementById("updateDiv");
-        if(x!=null){
-            if (x.style.display === "block") {
-                x.style.display = "none";
-            } else {
-                x.style.display = "block";
-            }
-        }
-    }
-
     useEffect(() => {
         getPlenumById();
     },[])
@@ -42,14 +41,14 @@ export default function PlenumsDetails() {
         <div className={"mainContainer"}>
            <div className={"rightContainer"}>
                <div>
-                   {!plenum ? <div>loading..</div> : <PlenumsCard plenum={plenum} updateToggle={updateToggle}/>}
+                   {plenum ? <PlenumsCard plenum={plenum} updateToggle={updateToggle}/> : <div>loading..</div>}
                </div>
             </div>
         </div>
             <div id="updateDiv">
                 <h1>Update:</h1>
                 <div  className={"mainContainer"}>
-                    {!plenum? <div>loading..</div> : <AddPlenumsTerminCard plenum={plenum} onUpdate={getPlenumById}/>}
+                    {plenum? <AddPlenumsTerminCard plenum={plenum} onUpdate={getPlenumById}/> : <div>loading..</div>}
                 </div>
             </div>
         </>

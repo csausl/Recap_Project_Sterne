@@ -28,12 +28,11 @@ export default function Plena() {
             <div className={"mainContainer"}>
                 <div className={"leftContainer"}>
                     <div>
-                        {!plena ? <div>LOADING..</div> : plena.map((plenum) => (
+                        {plena ?  plena.map((plenum) => (
                             <Link to={`/Plena/${plenum.id}`} key={plenum.id} >
                                 <PlenumsCardLight plenum={plenum}/>
                             </Link>
-                        ))
-                        }
+                        )) : <div>LOADING..</div>}
                     </div>
                 </div>
                 <div className={"rightContainer"}>

@@ -33,7 +33,6 @@ export default function AddPlenumsTerminCard(props:Readonly<UpdateProps>) {
     function handleSubmit(event:FormEvent<HTMLFormElement>) {
         event.preventDefault();
         setUpdatedPlenumsTerminDto({date: plenumDateString, group: plenumGroup, tops: [plenumFirstTop,plenumSecondTop,plenumThirdTop]});
-        //resetForm();
     }
 
     const handleChange = (event:ChangeEvent<HTMLSelectElement>) => {
