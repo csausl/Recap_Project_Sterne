@@ -39,6 +39,7 @@ export default function AddPlenumsTerminCard() {
                    .then(response => {
                        console.log(response.data);
                    })
+                   .finally(() => {navigate("/Plena")})
            }
 
     }
@@ -46,7 +47,6 @@ export default function AddPlenumsTerminCard() {
     useEffect(() => {
         if(plenumsTerminDto){
             addNewPlenumstermin();
-            navigate("/Plena");
         }
 
     }, [plenumsTerminDto]);
