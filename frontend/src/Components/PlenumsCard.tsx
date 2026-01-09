@@ -25,7 +25,7 @@ export default function PlenumsCard(props:Readonly<PlenumsCardProps>) {
     return (
                 <div className={"plenumsCard"} key={props.plenum.id}>
                     <p>{props.plenum.group}</p>
-                    <p>{props.plenum.date}</p>
+                    <p>{(new Date(Date.parse(props.plenum.date))).toLocaleDateString("de-EU")}</p>
                     <ul>Tops:
                         {props.plenum.tops.map((top,index) => (<li key={index}>{top}</li>))}
                     </ul>
