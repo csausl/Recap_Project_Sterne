@@ -61,7 +61,7 @@ export default function AddPlenumsTerminCard(props:Readonly<UpdateProps>) {
                 //value={""}
                 type="date"
                 onChange={(e) =>{
-                    const dateString = (new Date(e.target.value)).toLocaleDateString("de-EU");
+                    const dateString = (new Date(e.target.value)).toISOString();
                     setPlenumDateString(dateString);}
                 }
                 min="2025-01-01"
