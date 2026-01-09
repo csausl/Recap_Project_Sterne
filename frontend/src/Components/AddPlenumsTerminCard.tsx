@@ -16,7 +16,6 @@ export default function AddPlenumsTerminCard() {
     function handleSubmit(event:FormEvent<HTMLFormElement>) {
         event.preventDefault();
         setPlenumsTerminDto({date: plenumDateString, group: plenumGroup, tops: [plenumFirstTop,plenumSecondTop,plenumThirdTop]});
-        resetForm();
     }
 
 
