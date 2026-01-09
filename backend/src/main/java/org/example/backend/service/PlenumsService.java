@@ -23,6 +23,10 @@ public class PlenumsService {
         return plenumsRepo.findAll();
     }
 
+    public PlenumsTermin getPlenumById(String id){
+        return plenumsRepo.findById(id).orElse(null);
+    }
+
     public PlenumsTermin createPlenumsTerminFromDTO(PlenumsTerminDto plenumsTerminDto) {
         return PlenumsTermin.builder()
                 .id(idService.createId())

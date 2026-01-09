@@ -1,9 +1,10 @@
-import {Link} from "react-router-dom";
+
+import Navbar from "../Components/Navbar.tsx";
 
 export default function Users(){
     return(
         <>
-            <Link to={"/"}><button className={"backbutton"}>Home</button></Link>
+            <header className={"topBar"}><Navbar/></header>
             <h1>Users</h1>
         </>
     )

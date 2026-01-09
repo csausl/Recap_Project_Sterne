@@ -8,6 +8,8 @@ import Users from "./Pages/Users.tsx";
 import Admin from "./Pages/Admin.tsx";
 import Events from "./Pages/Events.tsx";
 import Infos from "./Pages/Infos.tsx";
+import PlenumAdd from "./Pages/PlenumAdd.tsx";
+import PlenumsDetails from "./Pages/PlenumsDetails.tsx";
 
 
 function App() {
@@ -27,6 +29,8 @@ function App() {
             <Route path={"/Events"} element={<Events/>}/>
             <Route path={"/Users"} element={<Users/>}/>
             <Route path={"/Admin"} element={<Admin/>}/>
+            <Route path={"/Plena/add"} element={<PlenumAdd/>}/>
+            <Route path={"/Plena/:plenumId"} element={<PlenumsDetails/>}/>
         </Routes>
     </>
   )

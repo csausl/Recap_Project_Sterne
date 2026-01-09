@@ -123,4 +123,26 @@ class PlenumsServiceTest {
         //THEN
         assertEquals(mockTerminNew,actual);
     }
+
+    @Test
+    void getPlenumById() {
+        //GIVEN
+        String mockID="asdghjkiud324";
+        String[] mockTops={"1","2","3"};
+        PlenumsTermin mockTermin=new PlenumsTermin(mockID,"1.1.2021", Subgroup.WERKSTATT,mockTops);
+
+        PlenumsRepository mockPlenumsRepo=mock(PlenumsRepository.class);
+        IDService mockIDService=mock(IDService.class);
+
+        PlenumsService mockPlenumsService=new PlenumsService(mockPlenumsRepo,mockIDService);
+
+        when(mockPlenumsRepo.findById(mockID)).thenReturn(Optional.of(mockTermin));
+
+        //WHEN
+        Optional<PlenumsTermin> actualTermin=Optional.of(mockPlenumsService.deleteTerminById(mockID));
+
+
+        //THEN
+        assertEquals(Optional.of(mockTermin),actualTermin);
+    }
 }

@@ -1,6 +1,7 @@
 import {type ChangeEvent, type FormEvent, useEffect, useState} from "react";
 import {type PlenumsTerminDto, type Subgroup, subgroups} from "../Types/Types.ts";
 import axios from "axios";
+import {useNavigate} from "react-router-dom";
 
 export default function AddPlenumsTerminCard() {
     const [plenumDateString, setPlenumDateString] = useState<string>("");
@@ -9,6 +10,8 @@ export default function AddPlenumsTerminCard() {
     const [plenumSecondTop, setPlenumSecondTop] = useState<string>("");
     const [plenumThirdTop, setPlenumThirdTop] = useState<string>("");
     const [plenumsTerminDto, setPlenumsTerminDto] = useState<PlenumsTerminDto>()
+
+    const navigate = useNavigate();
 
     function handleSubmit(event:FormEvent<HTMLFormElement>) {
         event.preventDefault();
@@ -41,8 +44,13 @@ export default function AddPlenumsTerminCard() {
     }
 
     useEffect(() => {
-        addNewPlenumstermin();
+        if(plenumsTerminDto){
+            addNewPlenumstermin();
+            navigate("/Plena");
+        }
+
     }, [plenumsTerminDto]);
+
     return (
             <form className={"plenumsForm"} onSubmit={handleSubmit}>
                 <label>Date:<input
@@ -50,6 +58,7 @@ export default function AddPlenumsTerminCard() {
                     type="date"
                     onChange={(e) =>{
                         const dateString = (new Date(e.target.value)).toLocaleDateString("de-EU");
+                        console.log(dateString);
                         setPlenumDateString(dateString);}
                     }
                     min="2025-01-01"

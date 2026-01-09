@@ -1,19 +1,14 @@
 import {useEffect, useState} from "react";
 import axios from "axios";
 import {type PlenumsTermin} from "../Types/Types.ts";
-import PlenumsCard from "../Components/PlenumsCard.tsx";
-
-import AddPlenumsTerminCard from "../Components/AddPlenumsTerminCard.tsx";
 import {Link} from "react-router-dom";
+import PlenumsCardLight from "../Components/PlenumsCardLight.tsx";
+import Navbar from "../Components/Navbar.tsx";
 
 
 export default function Plena() {
 
     const [plena, setPlena] = useState<PlenumsTermin[]>([]);
-
-    function clear(){
-        setPlena([])
-    }
 
     function getAllPlena(){
         axios.get("/api/plena").then((response) => {
@@ -28,28 +23,23 @@ export default function Plena() {
 
     return (
         <>
-        <div className={"topBar"}>
-            <Link to={"/"}><button className={"backbutton"}>Home</button></Link>
-            <h1 className={"pageName"}>Seite</h1>
-            <button className={"logoutButton"}>logout</button>
-        </div>
-        <div className={"mainContainer"}>
-            <div className={"leftContainer"}>
-                <AddPlenumsTerminCard/>
+            <header className={"topBar"}><Navbar/></header>
 
-            </div>
-            <div className={"rightContainer"}>
-                <button onClick={getAllPlena}>Get All!</button>
-                <button onClick={clear}>clear!</button>
-                <div>
-                    {plena.map((plenum) => (
-                        <PlenumsCard plenum={plenum} onTerminChange={getAllPlena} key={plenum.id}/>
-                        ))
-
-                    }
+            <div className={"mainContainer"}>
+                <div className={"leftContainer"}>
+                    <div>
+                        {plena ?  plena.map((plenum) => (
+                            <Link to={`/Plena/${plenum.id}`} key={plenum.id} >
+                                <PlenumsCardLight plenum={plenum}/>
+                            </Link>
+                        )) : <div>LOADING..</div>}
+                    </div>
                 </div>
+                <div className={"rightContainer"}>
+                    <Link to={"/Plena/add"}><div className={"flex-item"}>Add</div></Link>
+                </div>
+
             </div>
-        </div>
         </>
     )
 }

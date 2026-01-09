@@ -21,6 +21,11 @@ public class SterneController {
         return plenumsService.getAll();
     }
 
+    @GetMapping("/{id}")
+    public PlenumsTermin getPlenumById(@PathVariable String id){
+        return plenumsService.getPlenumById(id);
+    }
+
     @PostMapping()
     public PlenumsTermin addPlenumsTermin(@RequestBody PlenumsTerminDto plenumsTerminDto) {
         return plenumsService.addPlenumsTermin(plenumsTerminDto);

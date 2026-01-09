@@ -144,4 +144,30 @@ class SterneControllerTest {
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.content().json(plenumsTermin));
     }
+
+    @Test
+    void getPlenumById_shouldReturnPlenumsTermin_WhenCalledWithId() throws Exception {
+        //GIVEN
+        String id="askjdh123";
+        String[] mockTops={"1","2","3"};
+        String plenumsTermin="""
+                      {
+                              "id":"askjdh123",
+                              "date":"1.1.2011",
+                              "group":"WERKSTATT",
+                              "tops": [
+                                  "1",
+                                  "2",
+                                  "3"
+                              ]
+                          }
+                      """;
+        PlenumsTermin mockTermin = new PlenumsTermin("askjdh123","1.1.2011", Subgroup.WERKSTATT,mockTops);
+        plenumsRepository.save(mockTermin);
+        //WHEN
+        mockMvc.perform(MockMvcRequestBuilders.get("/api/plena/{id}",id))
+                //THEN
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.content().json(plenumsTermin));
+    }
 }
