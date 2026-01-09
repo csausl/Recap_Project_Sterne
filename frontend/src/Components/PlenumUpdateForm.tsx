@@ -41,11 +41,11 @@ export default function AddPlenumsTerminCard(props:Readonly<UpdateProps>) {
     };
 
     function resetForm() {
-        setPlenumDateString(plenumDateString)
-        setPlenumGroup(plenumGroup);
-        setPlenumFirstTop(plenumFirstTop);
-        setPlenumSecondTop(plenumSecondTop);
-        setPlenumThirdTop(plenumThirdTop);
+        setPlenumDateString(props.plenum.date)
+        setPlenumGroup(props.plenum.group);
+        setPlenumFirstTop(props.plenum.tops[0]);
+        setPlenumSecondTop(props.plenum.tops[1]);
+        setPlenumThirdTop(props.plenum.tops[2]);
     }
 
     useEffect(() => {
