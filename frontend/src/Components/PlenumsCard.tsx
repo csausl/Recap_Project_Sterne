@@ -8,27 +8,19 @@ type PlenumsCardProps={
 }
 
 export default function PlenumsCard(props:Readonly<PlenumsCardProps>) {
-    let cardStyle = {
-        backgroundColor: "DodgerBlue",
-    };
-    const date=(new Date()).toISOString();
+    let style;
+    if (props.plenum.group === "ALLE") {
+        style = {backgroundColor: "#F1F7B5"};
+    } else if (props.plenum.group === "WERKSTATT") {
+        style = {backgroundColor: "#A8D1D1"};
+    } else if (props.plenum.group === "FEMINISTA") {
+        style = {backgroundColor: "#D8CDF0"};
+    } else if (props.plenum.group === "RSL") {
+        style = {backgroundColor: "#C6DEF1"};
+    } else if (props.plenum.group === "RSG") {
+        style = {backgroundColor: "#FFCBCB"};
+    }
 
-    if(props.plenum.date < date){
-        cardStyle = {backgroundColor: "lightgray"};
-    }
-    else {
-        if (props.plenum.group === "ALLE") {
-            cardStyle = {backgroundColor: "#F1F7B5"};
-        } else if (props.plenum.group === "WERKSTATT") {
-            cardStyle = {backgroundColor: "#A8D1D1"};
-        } else if (props.plenum.group === "FEMINISTA") {
-            cardStyle = {backgroundColor: "#D8CDF0"};
-        } else if (props.plenum.group === "RSL") {
-            cardStyle = {backgroundColor: "#C6DEF1"};
-        } else if (props.plenum.group === "RSG") {
-            cardStyle = {backgroundColor: "#FFCBCB"};
-        }
-    }
 
     const backToPlena = useNavigate();
 
@@ -45,7 +37,7 @@ export default function PlenumsCard(props:Readonly<PlenumsCardProps>) {
     }
 
     return (
-                <div className={"plenumsCard"} key={props.plenum.id} style={cardStyle}>
+                <div className={"plenumsCard"} key={props.plenum.id} style={style}>
                     <p className={"cardGroup"}>{props.plenum.group}</p>
                     <p>{(new Date(Date.parse(props.plenum.date))).toLocaleDateString("de-EU")}</p>
                     <p>TOPS:</p>

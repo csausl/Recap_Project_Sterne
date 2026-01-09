@@ -7,9 +7,7 @@ type PlenumsCardLightProps={
 
 
 export default function PlenumsCardLight(props:Readonly<PlenumsCardLightProps>) {
-    let cardStyle = {
-        backgroundColor: "DodgerBlue",
-    };
+    let cardStyle
     const date=(new Date()).toISOString();
 
     if(props.plenum.date < date){
