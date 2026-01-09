@@ -12,7 +12,11 @@ export default function Plena() {
 
     function getAllPlena(){
         axios.get("/api/plena").then((response) => {
-            console.log(response.data);
+            response.data.sort((a:PlenumsTermin, b:PlenumsTermin) => {
+                if(a.date > b.date) return -1;
+                if(a.date < b.date) return 1;
+                return 0;
+            });
             setPlena(response.data);
         })
     }
@@ -28,15 +32,15 @@ export default function Plena() {
             <div className={"mainContainer"}>
                 <div className={"leftContainer"}>
                     <div>
-                        {plena ?  plena.map((plenum) => (
+                        {!(plena==undefined) ?  plena.map((plenum) => (
                             <Link to={`/Plena/${plenum.id}`} key={plenum.id} >
                                 <PlenumsCardLight plenum={plenum}/>
                             </Link>
-                        )) : <div>LOADING..</div>}
+                        )) : <div>loading..</div>}
                     </div>
                 </div>
                 <div className={"rightContainer"}>
-                    <Link to={"/Plena/add"}><div className={"flex-item"}>Add</div></Link>
+                    <Link to={"/Plena/add"}><button >Add</button></Link>
                 </div>
 
             </div>

@@ -8,12 +8,26 @@ type PlenumsCardProps={
 }
 
 export default function PlenumsCard(props:Readonly<PlenumsCardProps>) {
-   const backToPlena = useNavigate();
+    let style;
+    if (props.plenum.group === "ALLE") {
+        style = {backgroundColor: "#F1F7B5"};
+    } else if (props.plenum.group === "WERKSTATT") {
+        style = {backgroundColor: "#A8D1D1"};
+    } else if (props.plenum.group === "FEMINISTA") {
+        style = {backgroundColor: "#D8CDF0"};
+    } else if (props.plenum.group === "RSL") {
+        style = {backgroundColor: "#C6DEF1"};
+    } else if (props.plenum.group === "RSG") {
+        style = {backgroundColor: "#FFCBCB"};
+    }
+
+
+    const backToPlena = useNavigate();
 
     function deleteThisItem() {
         axios.delete("/api/plena/" + props.plenum.id)
             .then(res => {console.log(res.data)})
-            .then(() => {backToPlena("/plena")})
+            .finally(() => {backToPlena("/plena")})
     }
 
     function confirmDelete(){
@@ -23,12 +37,11 @@ export default function PlenumsCard(props:Readonly<PlenumsCardProps>) {
     }
 
     return (
-                <div className={"plenumsCard"} key={props.plenum.id}>
-                    <p>{props.plenum.group}</p>
-                    <p>{props.plenum.date}</p>
-                    <ul>Tops:
-                        {props.plenum.tops.map((top,index) => (<li key={index}>{top}</li>))}
-                    </ul>
+                <div className={"plenumsCard"} key={props.plenum.id} style={style}>
+                    <p className={"cardGroup"}>{props.plenum.group}</p>
+                    <p>{(new Date(Date.parse(props.plenum.date))).toLocaleDateString("de-EU")}</p>
+                    <p>TOPS:</p>
+                    <ul>{props.plenum.tops.map((top,index) => (top? <li key={index}>{top}</li> : null))}</ul>
                     <button onClick={confirmDelete}>Delete!</button>
                     <button onClick={props.updateToggle}>Update!</button>
                 </div>

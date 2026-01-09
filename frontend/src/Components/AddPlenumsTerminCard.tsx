@@ -16,7 +16,6 @@ export default function AddPlenumsTerminCard() {
     function handleSubmit(event:FormEvent<HTMLFormElement>) {
         event.preventDefault();
         setPlenumsTerminDto({date: plenumDateString, group: plenumGroup, tops: [plenumFirstTop,plenumSecondTop,plenumThirdTop]});
-        resetForm();
     }
 
 
@@ -39,6 +38,7 @@ export default function AddPlenumsTerminCard() {
                    .then(response => {
                        console.log(response.data);
                    })
+                   .finally(() => {navigate("/Plena")})
            }
 
     }
@@ -46,7 +46,6 @@ export default function AddPlenumsTerminCard() {
     useEffect(() => {
         if(plenumsTerminDto){
             addNewPlenumstermin();
-            navigate("/Plena");
         }
 
     }, [plenumsTerminDto]);
@@ -57,8 +56,7 @@ export default function AddPlenumsTerminCard() {
                     //value={plenumDate}
                     type="date"
                     onChange={(e) =>{
-                        const dateString = (new Date(e.target.value)).toLocaleDateString("de-EU");
-                        console.log(dateString);
+                        const dateString = (new Date(e.target.value)).toISOString();
                         setPlenumDateString(dateString);}
                     }
                     min="2025-01-01"

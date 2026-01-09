@@ -8,7 +8,7 @@ type UpdateProps={
     onUpdate:() => void
 }
 
-export default function AddPlenumsTerminCard(props:Readonly<UpdateProps>) {
+export default function PlenumUpdateForm(props:Readonly<UpdateProps>) {
     const [plenumDateString, setPlenumDateString] = useState<string>(props.plenum.date);
     const [plenumGroup, setPlenumGroup] = useState<Subgroup>(props.plenum.group);
     const [plenumFirstTop, setPlenumFirstTop] = useState<string>(props.plenum.tops[0]);
@@ -61,7 +61,7 @@ export default function AddPlenumsTerminCard(props:Readonly<UpdateProps>) {
                 //value={""}
                 type="date"
                 onChange={(e) =>{
-                    const dateString = (new Date(e.target.value)).toLocaleDateString("de-EU");
+                    const dateString = (new Date(e.target.value)).toISOString();
                     setPlenumDateString(dateString);}
                 }
                 min="2025-01-01"

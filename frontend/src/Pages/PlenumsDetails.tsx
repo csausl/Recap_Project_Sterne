@@ -5,7 +5,7 @@ import PlenumsCard from "../Components/PlenumsCard.tsx";
 import {useParams} from "react-router-dom";
 import axios from "axios";
 import Navbar from "../Components/Navbar.tsx";
-import AddPlenumsTerminCard from "../Components/PlenumUpdateForm.tsx";
+import PlenumUpdateForm from "../Components/PlenumUpdateForm.tsx";
 
 function updateToggle() {
     const x = document.getElementById("updateDiv");
@@ -48,7 +48,7 @@ export default function PlenumsDetails() {
             <div id="updateDiv">
                 <h1>Update:</h1>
                 <div  className={"mainContainer"}>
-                    {plenum? <AddPlenumsTerminCard plenum={plenum} onUpdate={getPlenumById}/> : <div>loading..</div>}
+                    {plenum? <PlenumUpdateForm plenum={plenum} onUpdate={getPlenumById}/> : <div>loading..</div>}
                 </div>
             </div>
         </>
