@@ -26,8 +26,8 @@ export default function PlenumsCard(props:Readonly<PlenumsCardProps>) {
                 <div className={"plenumsCard"} key={props.plenum.id}>
                     <p>{props.plenum.group}</p>
                     <p>{(new Date(Date.parse(props.plenum.date))).toLocaleDateString("de-EU")}</p>
-                    <ul>Tops:
-                        {props.plenum.tops.map((top,index) => (<li key={index}>{top}</li>))}
+                    <ul>TOPS:
+                        {props.plenum.tops.map((top,index) => (top? <li key={index}>{top}</li> : null))}
                     </ul>
                     <button onClick={confirmDelete}>Delete!</button>
                     <button onClick={props.updateToggle}>Update!</button>
