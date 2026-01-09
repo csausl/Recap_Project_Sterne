@@ -8,7 +8,7 @@ type UpdateProps={
     onUpdate:() => void
 }
 
-export default function AddPlenumsTerminCard(props:Readonly<UpdateProps>) {
+export default function PlenumUpdateForm(props:Readonly<UpdateProps>) {
     const [plenumDateString, setPlenumDateString] = useState<string>(props.plenum.date);
     const [plenumGroup, setPlenumGroup] = useState<Subgroup>(props.plenum.group);
     const [plenumFirstTop, setPlenumFirstTop] = useState<string>(props.plenum.tops[0]);
