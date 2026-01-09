@@ -13,7 +13,7 @@ export default function PlenumsCard(props:Readonly<PlenumsCardProps>) {
     function deleteThisItem() {
         axios.delete("/api/plena/" + props.plenum.id)
             .then(res => {console.log(res.data)})
-            .then(() => {backToPlena("/plena")})
+            .finally(() => {backToPlena("/plena")})
     }
 
     function confirmDelete(){
