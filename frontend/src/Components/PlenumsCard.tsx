@@ -9,16 +9,22 @@ type PlenumsCardProps={
 
 export default function PlenumsCard(props:Readonly<PlenumsCardProps>) {
     let style;
-    if (props.plenum.group === "ALLE") {
-        style = {backgroundColor: "#F1F7B5"};
-    } else if (props.plenum.group === "WERKSTATT") {
-        style = {backgroundColor: "#A8D1D1"};
-    } else if (props.plenum.group === "FEMINISTA") {
-        style = {backgroundColor: "#D8CDF0"};
-    } else if (props.plenum.group === "RSL") {
-        style = {backgroundColor: "#C6DEF1"};
-    } else if (props.plenum.group === "RSG") {
-        style = {backgroundColor: "#FFCBCB"};
+    switch (props.plenum.group){
+        case "ALLE":
+            style = {backgroundColor: "#F1F7B5"};
+            break;
+        case "WERKSTATT":
+            style = {backgroundColor: "#A8D1D1"};
+            break;
+        case "FEMINISTA":
+            style = {backgroundColor: "#D8CDF0"};
+            break;
+        case "RSL":
+            style = {backgroundColor: "#C6DEF1"};
+            break;
+        case "RSG":
+            style = {backgroundColor: "#FFCBCB"};
+            break;
     }
 
 
