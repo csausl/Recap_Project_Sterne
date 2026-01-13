@@ -13,7 +13,7 @@ export default function PlenumUpdateForm(props:Readonly<UpdateProps>) {
         firstName: "",
         orga: "",
         date: "",
-        group: "",
+        group: props.plenum.group as string,
     })
     const [topsForm, setTops] = useState([{
         topContent: "",
@@ -76,7 +76,6 @@ export default function PlenumUpdateForm(props:Readonly<UpdateProps>) {
         event.preventDefault();
         const topArray=topsForm.map(a => a.topContent);
         setUpdatedPlenumsTerminDto({date: plenumsInfo.date, group: plenumsInfo.group as Subgroup, tops: topArray});
-        //setPlenumsTerminDto({date: plenumsInfo.date, group: plenumsInfo.group as Subgroup, tops: topArray});
     }
 
     function resetFormNew() {
@@ -100,8 +99,6 @@ export default function PlenumUpdateForm(props:Readonly<UpdateProps>) {
                 timestamp: index,
             })}
         )
-
-
         resetTops.splice(0,1);
         setTops(resetTops);
     }
@@ -132,9 +129,9 @@ export default function PlenumUpdateForm(props:Readonly<UpdateProps>) {
 
     return (
         <>
-            <form className="formLayout" onSubmit={confirmUpdate}>
+            <form className="formLayout flex flex-row" onSubmit={confirmUpdate}>
                 <fieldset className="formFieldSet">
-                    <legend className="formLegend">Termin Details</legend>
+                    <legend className="formLegend ">Termin Details</legend>
                     <label className="formLabel">Dein Name</label>
                     <input
                         className="formInput "
@@ -166,7 +163,7 @@ export default function PlenumUpdateForm(props:Readonly<UpdateProps>) {
                     />
                     <label className="formLabel">Gruppe</label>
                     <select
-                        className="formInput "
+                        className="formInput"
                         id="group"
                         name="group"
                         required={true}
@@ -217,10 +214,10 @@ export default function PlenumUpdateForm(props:Readonly<UpdateProps>) {
                         </button>
                     </div>
 
-
+                    <button type="submit">Abschicken</button>
+                    <button type="reset" onClick={resetFormNew}>Reset</button>
                 </fieldset>
-                <button type="submit">Abschicken</button>
-                <button type="reset" onClick={resetFormNew}>Reset</button>
+
             </form>
         </>
     )

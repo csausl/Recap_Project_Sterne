@@ -35,7 +35,7 @@ export default function Plena() {
         <>
             <header className={"topBar"}><Navbar/></header>
 
-            <div className={"mainContainer"}>
+            <div className="mainContainer">
                 <div className={"leftContainer"}>
                     <div>
                         {!(plena[0].id=="") ?  plena.map((plenum) => (

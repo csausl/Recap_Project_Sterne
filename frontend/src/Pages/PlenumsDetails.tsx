@@ -44,8 +44,7 @@ export default function PlenumsDetails() {
                    {plenum ? <PlenumsCard plenum={plenum} updateToggle={updateToggle}/> : <div>loading..</div>}
                </div>
             </div>
-            <div id="updateDiv">
-                <h1>Update:</h1>
+            <div id="updateDiv" className="bor">
                 <div  className={"mainContainer"}>
                     {plenum? <PlenumUpdateForm plenum={plenum} onUpdate={getPlenumById}/> : <div>loading..</div>}
                 </div>
