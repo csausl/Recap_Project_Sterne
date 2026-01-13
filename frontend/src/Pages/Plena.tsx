@@ -14,8 +14,8 @@ export default function Plena() {
         axios.get("/api/plena").then((response) => {
             response.data.sort((a:PlenumsTermin, b:PlenumsTermin) => {
                 if(a.date > b.date) return -1;
-                if(a.date < b.date) return 1;
-                return 0;
+                else if(a.date < b.date) return 1;
+                else return 0;
             });
             setPlena(response.data);
         })
