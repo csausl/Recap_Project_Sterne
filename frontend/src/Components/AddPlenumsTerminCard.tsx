@@ -16,18 +16,18 @@ export default function AddPlenumsTerminCard() {
         timestamp: new Date().getTime(),
     }])
 
-    const handleInput = (event) => {
-        const {name, value} = event.target;
+    const handleChange = (e) => {
+        const {name, value} = e.target;
         setplenumsInfo({
             ...plenumsInfo,
             [name]: value
         })
     }
 
-    const handleTop = (event, index: number) => {
-        const {name, value} = event.target;
+    const handleTop = (e, i: number) => {
+        const {name, value} = e.target;
         const newTops = [...topsForm];
-        newTops[index][name] = value;
+        newTops[i][name] = value;
         setTops(newTops);
     }
 
@@ -113,7 +113,7 @@ export default function AddPlenumsTerminCard() {
                         type="text"
                         name="firstName"
                         placeholder="Name"
-                        onChange={handleInput}
+                        onChange={handleChange}
                     />
                     <label className="formLabel">Orga</label>
                     <input
@@ -122,7 +122,7 @@ export default function AddPlenumsTerminCard() {
                         type="text"
                         name="orga"
                         placeholder="Wer macht die Orga?"
-                        onChange={handleInput}
+                        onChange={handleChange}
                     />
                     <label className="formLabel">Datum</label>
                     <input
@@ -130,7 +130,7 @@ export default function AddPlenumsTerminCard() {
                         type="date"
                         name="date"
                         required={true}
-                        onChange={handleInput}
+                        onChange={handleChange}
                         min="2025-01-01"
                         max="2050-12-31"
                     />
@@ -140,7 +140,7 @@ export default function AddPlenumsTerminCard() {
                         id="group"
                         name="group"
                         required={true}
-                        onChange={handleInput}>
+                        onChange={handleChange}>
                         {subgroups.map((category) => (
                             <option value={category.value} key={category.value}>{category.label}</option>
                         ))}
