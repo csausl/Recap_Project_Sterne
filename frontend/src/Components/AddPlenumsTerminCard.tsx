@@ -10,6 +10,49 @@ export type TerminData={
 }
 
 export default function AddPlenumsTerminCard() {
+    const [userInfo, setUserInfo] = useState({
+        firstName: "",
+        orga: "",
+        date: "",
+        group: "",
+    })
+    const [tops, setTops] = useState([{
+        top: "",
+        timestamp: new Date().getTime(),
+    }])
+
+    console.log(userInfo);
+    console.log(tops);
+
+    const handleInput = (e) => {
+        const {name, value} = e.target;
+        setUserInfo({
+            ...userInfo,
+            [name]: value
+        })
+    }
+
+    const handleTop = (e, i: number) => {
+        console.log(i);
+        const {name, value} = e.target;
+        const newTops = [...tops];
+        newTops[i][name] = value;
+        setTops(newTops);
+    }
+
+    const handleRemoveTop = (i: number) => {
+        const deleteTops=[...tops];
+        deleteTops.splice(i,1);
+        setTops(deleteTops);
+    }
+
+    const handleAddTop = () => {
+        setTops([...tops, {
+            top: "",
+            timestamp: new Date().getTime(),
+        }])
+    }
+
     const [plenumDateString, setPlenumDateString] = useState<string>("");
     const [plenumGroup, setPlenumGroup] = useState<Subgroup>(undefined);
     const [plenumFirstTop, setPlenumFirstTop] = useState<string>("");
@@ -56,8 +99,6 @@ export default function AddPlenumsTerminCard() {
 
     return (
         <>
-
-
             <form className={"plenumsForm"} onSubmit={handleSubmit}>
                 <label>Date:<input
                     //value={plenumDate}
@@ -106,6 +147,83 @@ export default function AddPlenumsTerminCard() {
                 </label>
                 <button type="submit">Submit</button>
                 <button type="reset" onClick={resetForm}>Reset</button>
+            </form>
+
+            <form className="formLayout">
+                <fieldset className="formFieldSet">
+                    <legend className="formLegend">Information Hinzufügen</legend>
+                    <label className="formLabel">Dein Name</label>
+                    <input
+                        className="formInput focus:outline-2 focus:outline-red-300"
+                        id="firstName"
+                        type="text"
+                        name="firstName"
+                        placeholder="Name"
+                        onChange={handleInput}
+                    />
+                    <label className="formLabel">Orga</label>
+                    <input
+                        className="formInput focus:outline-2 focus:outline-red-300"
+                        id="orga"
+                        type="text"
+                        name="orga"
+                        placeholder="Wer macht die Orga?"
+                        onChange={handleInput}
+                    />
+                    <label className="formLabel">Datum</label>
+                    <input
+                        className="formInput focus:outline-2 focus:outline-red-300"
+                        id="date"
+                        type="date"
+                        name="date"
+                        onChange={handleInput}
+                        min="2025-01-01"
+                        max="2050-12-31"
+                    />
+                    <label className="formLabel">Gruppe</label>
+                    <select
+                        className="formInput focus:outline-2 focus:outline-red-300"
+                        id="group"
+                        name="group"
+                        onChange={handleInput}>
+                        {subgroups.map((category) => (
+                            <option value={category.value} key={category.value}>{category.label}</option>
+                        ))}
+                    </select>
+                </fieldset>
+                <fieldset className="formFieldSet">
+                    <legend className="formLegend">Tagesordnungpunkte</legend>
+                    {tops.map((top, i) => (
+                        <div key={top.timestamp} className="flex flex-col">
+                            <label className="formLabel">TOP {i+1}</label>
+                            <div className="flex flex-row items-center">
+                            <textarea className="formInput focus:outline-2 focus:outline-red-300"
+                                      id="top"
+                                      name="top"
+                                      rows={2}
+                                      placeholder="Was ist zu tun?"
+                                      onChange={e => handleTop(e, i)}/>
+                                <button
+                                    className="w-1/5 border border-gray-400 text-lg leading-tight"
+                                    type={"button"}
+                                    onClick={()=> handleRemoveTop(i)}
+                                > - </button>
+                            </div>
+                        </div>
+                    ))}
+                    <div className="w-full flex justify-center">
+                        <button
+                            className="w-1/5 border border-gray-400 text-lg leading-tight"
+                            type="button"
+                            onClick={handleAddTop}
+                        >
+                            +
+                        </button>
+                    </div>
+
+
+                </fieldset>
+                <button type="submit">Submit</button>
             </form>
         </>
     )
