@@ -81,6 +81,13 @@ export default function AddPlenumsTerminCard() {
 
     }
 
+    function confirmUpdate(event:FormEvent<HTMLFormElement>){
+        if(confirm("Termin anlegen?")){
+            handleSubmit(event);
+        }
+        else event.preventDefault();
+    }
+
     useEffect(() => {
         if(plenumsTerminDto){
             addNewPlenumstermin();
@@ -92,10 +99,11 @@ export default function AddPlenumsTerminCard() {
     console.log(topsForm);
 
 
+
     return (
         <>
             <label className="text-4xl font-semibold mt-5 mb-5">Plenumstermin hinzufügen</label>
-            <form className="formLayout" onSubmit={handleSubmit}>
+            <form className="formLayout" onSubmit={confirmUpdate}>
                 <fieldset className="formFieldSet">
                     <legend className="formLegend">Termin Details</legend>
                     <label className="formLabel">Dein Name</label>
@@ -121,6 +129,7 @@ export default function AddPlenumsTerminCard() {
                         className="formInput"
                         type="date"
                         name="date"
+                        required={true}
                         onChange={handleInput}
                         min="2025-01-01"
                         max="2050-12-31"
@@ -130,6 +139,7 @@ export default function AddPlenumsTerminCard() {
                         className="formInput "
                         id="group"
                         name="group"
+                        required={true}
                         onChange={handleInput}>
                         {subgroups.map((category) => (
                             <option value={category.value} key={category.value}>{category.label}</option>
