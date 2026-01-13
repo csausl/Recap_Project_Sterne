@@ -8,7 +8,12 @@ import Navbar from "../Components/Navbar.tsx";
 
 export default function Plena() {
 
-    const [plena, setPlena] = useState<PlenumsTermin[]>([]);
+    const [plena, setPlena] = useState<PlenumsTermin[]>([{
+        id:"",
+        date:"",
+        group:"",
+        tops:[""]
+    }]);
 
     function getAllPlena(){
         axios.get("/api/plena").then((response) => {
@@ -25,6 +30,7 @@ export default function Plena() {
         getAllPlena();
     },[])
 
+
     return (
         <>
             <header className={"topBar"}><Navbar/></header>
@@ -32,7 +38,7 @@ export default function Plena() {
             <div className={"mainContainer"}>
                 <div className={"leftContainer"}>
                     <div>
-                        {!(plena==undefined) ?  plena.map((plenum) => (
+                        {!(plena[0].id=="") ?  plena.map((plenum) => (
                             <Link to={`/Plena/${plenum.id}`} key={plenum.id} >
                                 <PlenumsCardLight plenum={plenum}/>
                             </Link>
