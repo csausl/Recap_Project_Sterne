@@ -46,7 +46,7 @@ export default function Plena() {
                     </div>
                 </div>
                 <div className={"rightContainer"}>
-                    <Link to={"/Plena/add"}><button >Add</button></Link>
+                    <Link to={"/Plena/add"}><button >Hinzufügen</button></Link>
                 </div>
 
             </div>
