@@ -1,4 +1,4 @@
-import {type ChangeEvent, type FormEvent, useEffect, useState} from "react";
+import {type FormEvent, useEffect, useState} from "react";
 import {type PlenumsTermin, type PlenumsTerminDto, type Subgroup, subgroups} from "../Types/Types.ts";
 import axios from "axios";
 import {useNavigate} from "react-router-dom";
@@ -22,26 +22,24 @@ export default function PlenumUpdateForm(props:Readonly<UpdateProps>) {
     }])
 
     if (plenumsInfo.date === "") {
-        console.log(props.plenum,plenumsInfo)
         setplenumsInfo({
             firstName: "",
             orga: "",
             date: props.plenum.date,
             group: props.plenum.group as string,
         })
-        console.log(plenumsInfo)
 
-        props.plenum.tops.map((top, index) => {
-
+        props.plenum.tops.forEach((top,index) => {
             topsForm.push({
                 topContent: top,
                 topOrga: "",
                 timestamp: index,
-            });
-            const deleteTops=[...topsForm];
-            deleteTops.splice(0,1);
-            setTops(deleteTops);
-        })
+            })}
+        )
+
+        const deleteTops=[...topsForm];
+        deleteTops.splice(0,1);
+        setTops(deleteTops);
 
     }
 
@@ -82,32 +80,30 @@ export default function PlenumUpdateForm(props:Readonly<UpdateProps>) {
     }
 
     function resetFormNew() {
-        console.log(props.plenum,plenumsInfo)
         setplenumsInfo({
             firstName: "",
             orga: "",
             date: props.plenum.date,
             group: props.plenum.group as string,
         })
-        console.log(plenumsInfo)
 
-        setTops([{
+        const resetTops=[{
             topContent: "",
             topOrga: "",
             timestamp: 0,
-        }])
+        }];
 
-        props.plenum.tops.map((top, index) => {
-
-            topsForm.push({
+        props.plenum.tops.forEach((top,index) => {
+            resetTops.push({
                 topContent: top,
                 topOrga: "",
                 timestamp: index,
-            });
-            const deleteTops=[...topsForm];
-            deleteTops.splice(0,1);
-            setTops(deleteTops);
-        })
+            })}
+        )
+
+
+        resetTops.splice(0,1);
+        setTops(resetTops);
     }
 
     const [updatedPlenumsTerminDto, setUpdatedPlenumsTerminDto] = useState<PlenumsTerminDto>();
@@ -163,6 +159,7 @@ export default function PlenumUpdateForm(props:Readonly<UpdateProps>) {
                         type="date"
                         name="date"
                         required={true}
+                        value={plenumsInfo.date}
                         onChange={handleInput}
                         min="2025-01-01"
                         max="2050-12-31"
@@ -222,7 +219,7 @@ export default function PlenumUpdateForm(props:Readonly<UpdateProps>) {
 
 
                 </fieldset>
-                <button type="submit">Submit</button>
+                <button type="submit">Abschicken</button>
                 <button type="reset" onClick={resetFormNew}>Reset</button>
             </form>
         </>
