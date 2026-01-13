@@ -55,21 +55,6 @@ export default function LandingPage(){
                     <li className="categoryCard">Events</li>
                 </Link>
             </ul>
-
-
-            <h2>Testecke</h2>
-
-            <button onClick={myFunction}>Info Popup</button>
-
-            <button onClick={myFunction2}>confirm popup</button>
-
-            <p id="demo"></p>
-
-            <button onClick={myFunction4}>Click Me</button>
-
-            <div id="myDIV">
-                <button onClick={myFunction}>myDiv Info Popup</button>
-            </div>
         </>
     )
 }
