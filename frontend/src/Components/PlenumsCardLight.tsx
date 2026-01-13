@@ -7,23 +7,29 @@ type PlenumsCardLightProps={
 
 
 export default function PlenumsCardLight(props:Readonly<PlenumsCardLightProps>) {
-    let cardStyle
+    let cardStyle;
     const date=(new Date()).toISOString();
 
     if(props.plenum.date < date){
         cardStyle = {backgroundColor: "lightgray"};
     }
     else {
-        if (props.plenum.group === "ALLE") {
-            cardStyle = {backgroundColor: "#F1F7B5"};
-        } else if (props.plenum.group === "WERKSTATT") {
-            cardStyle = {backgroundColor: "#A8D1D1"};
-        } else if (props.plenum.group === "FEMINISTA") {
-            cardStyle = {backgroundColor: "#D8CDF0"};
-        } else if (props.plenum.group === "RSL") {
-            cardStyle = {backgroundColor: "#C6DEF1"};
-        } else if (props.plenum.group === "RSG") {
-            cardStyle = {backgroundColor: "#FFCBCB"};
+        switch (props.plenum.group){
+            case "ALLE":
+                cardStyle = {backgroundColor: "#F1F7B5"};
+                break;
+            case "WERKSTATT":
+                cardStyle = {backgroundColor: "#A8D1D1"};
+                break;
+            case "FEMINISTA":
+                cardStyle = {backgroundColor: "#D8CDF0"};
+                break;
+            case "RSL":
+                cardStyle = {backgroundColor: "#C6DEF1"};
+                break;
+            case "RSG":
+                cardStyle = {backgroundColor: "#FFCBCB"};
+                break;
         }
     }
 
