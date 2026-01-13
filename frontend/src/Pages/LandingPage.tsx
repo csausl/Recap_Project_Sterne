@@ -40,19 +40,19 @@ export default function LandingPage(){
 
             <ul className="flex-container">
                 <Link to={"/Infos"}>
-                    <li className="flex-item">Infos</li>
+                    <li className="categoryCard">Infos</li>
                 </Link>
                 <Link to={"/Plena"}>
-                    <li className="flex-item">Plena</li>
+                    <li className="categoryCard">Plena</li>
                 </Link>
                 <Link to={"/Werki"}>
-                    <li className="flex-item">Werki</li>
+                    <li className="categoryCard">Werki</li>
                 </Link>
                 <Link to={"/Routen"}>
-                    <li className="flex-item">Routen</li>
+                    <li className="categoryCard">Routen</li>
                 </Link>
                 <Link to={"/Events"}>
-                    <li className="flex-item">Events</li>
+                    <li className="categoryCard">Events</li>
                 </Link>
             </ul>
 
