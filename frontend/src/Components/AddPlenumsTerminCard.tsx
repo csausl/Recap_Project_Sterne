@@ -4,13 +4,13 @@ import axios from "axios";
 import {useNavigate} from "react-router-dom";
 
 export default function AddPlenumsTerminCard() {
-    const [plenumsInfo, setplenumsInfo] = useState({
+    const [plenumsInfos, setplenumsInfos] = useState({
         firstName: "",
         orga: "",
         date: "",
         group: "",
     })
-    const [topsForm, setTops] = useState([{
+    const [topForm, setTopForm] = useState([{
         topContent: "",
         topOrga: "",
         timestamp: new Date().getTime(),
@@ -18,27 +18,27 @@ export default function AddPlenumsTerminCard() {
 
     const handleChange = (e) => {
         const {name, value} = e.target;
-        setplenumsInfo({
-            ...plenumsInfo,
+        setplenumsInfos({
+            ...plenumsInfos,
             [name]: value
         })
     }
 
     const handleTop = (e, i: number) => {
         const {name, value} = e.target;
-        const newTops = [...topsForm];
+        const newTops = [...topForm];
         newTops[i][name] = value;
-        setTops(newTops);
+        setTopForm(newTops);
     }
 
     const handleRemoveTop = (i: number) => {
-        const deleteTops=[...topsForm];
+        const deleteTops=[...topForm];
         deleteTops.splice(i,1);
-        setTops(deleteTops);
+        setTopForm(deleteTops);
     }
 
     const handleAddTop = () => {
-        setTops([...topsForm, {
+        setTopForm([...topForm, {
             topContent: "",
             topOrga:"",
             timestamp: new Date().getTime(),
@@ -50,19 +50,19 @@ export default function AddPlenumsTerminCard() {
 
     function handleSubmit(event:FormEvent<HTMLFormElement>) {
         event.preventDefault();
-        const topArray=topsForm.map(a => a.topContent);
-        setPlenumsTerminDto({date: plenumsInfo.date, group: plenumsInfo.group as Subgroup, tops: topArray});
+        const topArray=topForm.map(a => a.topContent);
+        setPlenumsTerminDto({date: plenumsInfos.date, group: plenumsInfos.group as Subgroup, tops: topArray});
     }
 
     function resetForm() {
-        setplenumsInfo({
+        setplenumsInfos({
             firstName: "",
             orga: "",
             date: "",
             group: "",
         })
 
-        setTops([{
+        setTopForm([{
             topContent: "",
             topOrga: "",
             timestamp: new Date().getTime(),
@@ -94,11 +94,6 @@ export default function AddPlenumsTerminCard() {
         }
 
     }, [plenumsTerminDto]);
-
-    console.log(plenumsInfo);
-    console.log(topsForm);
-
-
 
     return (
         <>
@@ -148,7 +143,7 @@ export default function AddPlenumsTerminCard() {
                 </fieldset>
                 <fieldset className="formFieldSet">
                     <legend className="formLegend">Tagesordnungspunkte</legend>
-                    {topsForm.map((top, index) => (
+                    {topForm.map((top, index) => (
                         <div key={top.timestamp} className="flex flex-col">
                             <label className="formLabel">TOP {index+1}</label>
                             <input
