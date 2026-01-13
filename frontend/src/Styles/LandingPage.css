@@ -1,16 +1,6 @@
 .flex-container {
-    /* We first create a flex layout context */
     display: flex;
-
-    /* Then we define the flow direction
-       and if we allow the items to wrap
-     * Remember this is the same as:
-     * flex-direction: row;
-     * flex-wrap: wrap;
-     */
     flex-flow: row wrap;
-
-    /* Then we define how is distributed the remaining space */
     justify-content: space-around;
 
     padding: 50px;
@@ -20,7 +10,7 @@
     text-decoration: none;
 }
 
-.flex-item {
+.categoryCard {
 
     background: darkred;
     padding: 5px;
@@ -41,12 +31,12 @@
     box-shadow: 5px 5px 15px 5px darkgrey;
 }
 
-.flex-item:hover {
+.categoryCard:hover {
     background: indianred;
     box-shadow: 5px 5px 15px 5px black;
 }
 
-.flex-item:visited, .flex-item:link{
+.categoryCard:visited, .categoryCard:link{
     text-decoration: none;
 }
 

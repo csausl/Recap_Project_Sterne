@@ -78,3 +78,51 @@
 #updateDiv{
     display: none;
 }
+
+.formLayout{
+    width: 83.333333%;
+    max-width: 28rem;
+}
+
+.formFieldSet{
+    display: flex;
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    flex-direction: column;
+    gap: 0.5rem;
+    border-radius: 0.25rem;
+    border-width: 1px;
+    border-color: #9CA3AF;
+
+}
+
+.formLegend{
+    margin-bottom: 0.5rem;
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+    font-weight: 600;
+}
+
+.formLabel{
+    font-size: 1.5rem;
+    line-height: 2rem;
+    font-weight: 600;
+}
+
+.formInput{
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+    margin-bottom: 0.75rem;
+    margin-top: 1rem;
+    border-radius: 0.25rem;
+    border-width: 1px;
+    border-color: #9CA3AF;
+    width: 80%;
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+    line-height: 1.25;
+}
