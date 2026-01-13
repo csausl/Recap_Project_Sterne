@@ -58,7 +58,7 @@ export default function PlenumUpdateForm(props:Readonly<UpdateProps>) {
         <form className={"plenumsForm"} onSubmit={confirmUpdate}>
             <label>Date:<input
                 //value={plenumDate}
-                //value={""}
+                //value="2026-01-01"
                 type="date"
                 onChange={(e) =>{
                     const dateString = (new Date(e.target.value)).toISOString();
