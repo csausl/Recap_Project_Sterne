@@ -33,10 +33,11 @@ export default function Plena() {
 
     return (
         <>
-            <header className={"topBar"}><Navbar/></header>
+            <header ><Navbar/></header>
 
             <div className="mainContainer">
-                <div className={"leftContainer"}>
+
+                <div className={"subcontainer"}>
                     <div>
                         {!(plena[0].id=="") ?  plena.map((plenum) => (
                             <Link to={`/Plena/${plenum.id}`} key={plenum.id} >
@@ -45,9 +46,10 @@ export default function Plena() {
                         )) : <div>loading..</div>}
                     </div>
                 </div>
-                <div className={"rightContainer"}>
-                    <Link to={"/Plena/add"}><button >Hinzufügen</button></Link>
+                <div className={""}>
+                    <Link to={"/Plena/add"}><button className={"w-55 p-4 mt-0! ml-10! text-2xl font-semibold"}>Hinzufügen</button></Link>
                 </div>
+
 
             </div>
         </>

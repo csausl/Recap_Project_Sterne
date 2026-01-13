@@ -1,7 +1,7 @@
 .flex-container {
     display: flex;
     flex-flow: row wrap;
-    justify-content: space-around;
+    justify-content: space-evenly;
 
     padding: 50px;
     margin: 50px;
@@ -12,10 +12,7 @@
 
 .categoryCard {
 
-    background: darkred;
-    padding: 5px;
-    width: 200px;
-    height: 175px;
+    background: #a64646;
     color: white;
     text-decoration: none;
 

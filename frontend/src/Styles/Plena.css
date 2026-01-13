@@ -19,28 +19,26 @@
     margin: 5px;
     padding: 5px;
 }
-.leftContainer{
+
+.subcontainer{
     display: flex;
     flex-direction: column;
 
-    margin: 5px;
-    padding: 5px;
+}
+.leftContainer{
+    display: flex;
+    flex-direction: column;
 }
 
 .rightContainer{
     display: flex;
     flex-direction: column;
-
-    margin: 5px;
-    padding: 5px;
 }
 
 .plenumsCard{
     background: indianred;
 
-
-
-    margin-top: 10px;
+    margin-top: 17px;
     margin-bottom: 10px;
     color: black;
     text-decoration: none !important;
@@ -57,6 +55,7 @@
 }
 
 .plenumsCardLight{
+    background: #af3a3a;
     color: black;
     text-decoration: none !important;
     text-align: center;
@@ -80,15 +79,15 @@
 }
 
 .formFieldSet{
+    background-color: #eddede;
     display: flex;
     width: 20rem;
     padding-top: 0.25rem;
     padding-bottom: 0.25rem;
     padding-left: 1rem;
     padding-right: 1rem;
-    margin-top: 1rem;
+    margin-left: 1rem;
     flex-direction: column;
-    gap: 0.5rem;
     border-radius: 0.25rem;
     border-width: 1px;
     border-color: #9CA3AF;
@@ -121,7 +120,6 @@
     width: 80%;
     font-size: 1.125rem;
     line-height: 1.75rem;
-    line-height: 1.25;
 }
 
 .formInput:focus{

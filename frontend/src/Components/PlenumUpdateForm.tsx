@@ -129,8 +129,8 @@ export default function PlenumUpdateForm(props:Readonly<UpdateProps>) {
 
     return (
         <>
-            <form className="formLayout flex flex-row" onSubmit={confirmUpdate}>
-                <fieldset className="formFieldSet">
+            <form className="formLayout flex flex-row items-start" onSubmit={confirmUpdate}>
+                <fieldset className="formFieldSet bg-neutral-100">
                     <legend className="formLegend ">Termin Details</legend>
                     <label className="formLabel">Dein Name</label>
                     <input
@@ -174,7 +174,7 @@ export default function PlenumUpdateForm(props:Readonly<UpdateProps>) {
                         ))}
                     </select>
                 </fieldset>
-                <fieldset className="formFieldSet">
+                <fieldset className="formFieldSet bg-neutral-100">
                     <legend className="formLegend">Tagesordnungspunkte</legend>
                     {topsForm.map((top, index) => (
                         <div key={top.timestamp} className="flex flex-col">

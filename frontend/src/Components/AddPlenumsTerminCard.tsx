@@ -98,7 +98,7 @@ export default function AddPlenumsTerminCard() {
     return (
         <div className={"flex flex-col items-center"}>
             <label className="text-4xl font-semibold mt-5 mb-5">Plenumstermin hinzufügen</label>
-            <form className="formLayout flex flex-row" onSubmit={confirmUpdate}>
+            <form className="formLayout flex flex-row min-w-fit items-start" onSubmit={confirmUpdate}>
                 <fieldset className="formFieldSet">
                     <legend className="formLegend">Termin Details</legend>
                     <label className="formLabel">Dein Name</label>
