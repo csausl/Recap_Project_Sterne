@@ -90,6 +90,7 @@
     padding-bottom: 0.25rem;
     padding-left: 1rem;
     padding-right: 1rem;
+    margin-top: 1rem;
     flex-direction: column;
     gap: 0.5rem;
     border-radius: 0.25rem;
@@ -117,7 +118,6 @@
     padding-top: 0.75rem;
     padding-bottom: 0.75rem;
     margin-bottom: 0.75rem;
-    margin-top: 1rem;
     border-radius: 0.25rem;
     border-width: 1px;
     border-color: #9CA3AF;
@@ -125,4 +125,9 @@
     font-size: 1.125rem;
     line-height: 1.75rem;
     line-height: 1.25;
+}
+
+.formInput:focus{
+    outline-style: solid;
+    outline-color: indianred;
 }
