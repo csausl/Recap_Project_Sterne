@@ -48,8 +48,8 @@ export default function PlenumsCard(props:Readonly<PlenumsCardProps>) {
                     <p>{(new Date(Date.parse(props.plenum.date))).toLocaleDateString("de-EU")}</p>
                     <p>TOPS:</p>
                     <ul>{props.plenum.tops.map((top,index) => (top? <li key={index}>{top}</li> : null))}</ul>
-                    <button onClick={confirmDelete}>Delete!</button>
-                    <button onClick={props.updateToggle}>Update!</button>
+                    <button onClick={confirmDelete}>Löschen!</button>
+                    <button onClick={props.updateToggle}>Ändern!</button>
                 </div>
     )
 }
