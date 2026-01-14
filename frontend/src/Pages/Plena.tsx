@@ -8,14 +8,19 @@ import Navbar from "../Components/Navbar.tsx";
 
 export default function Plena() {
 
-    const [plena, setPlena] = useState<PlenumsTermin[]>([]);
+    const [plena, setPlena] = useState<PlenumsTermin[]>([{
+        id:"",
+        date:"",
+        group:"",
+        tops:[""]
+    }]);
 
     function getAllPlena(){
         axios.get("/api/plena").then((response) => {
             response.data.sort((a:PlenumsTermin, b:PlenumsTermin) => {
                 if(a.date > b.date) return -1;
-                if(a.date < b.date) return 1;
-                return 0;
+                else if(a.date < b.date) return 1;
+                else return 0;
             });
             setPlena(response.data);
         })
@@ -25,23 +30,26 @@ export default function Plena() {
         getAllPlena();
     },[])
 
+
     return (
         <>
-            <header className={"topBar"}><Navbar/></header>
+            <header ><Navbar/></header>
 
-            <div className={"mainContainer"}>
-                <div className={"leftContainer"}>
+            <div className="mainContainer">
+
+                <div className={"subcontainer"}>
                     <div>
-                        {!(plena==undefined) ?  plena.map((plenum) => (
+                        {!(plena[0].id=="") ?  plena.map((plenum) => (
                             <Link to={`/Plena/${plenum.id}`} key={plenum.id} >
                                 <PlenumsCardLight plenum={plenum}/>
                             </Link>
                         )) : <div>loading..</div>}
                     </div>
                 </div>
-                <div className={"rightContainer"}>
-                    <Link to={"/Plena/add"}><button >Add</button></Link>
+                <div className={""}>
+                    <Link to={"/Plena/add"}><button className={"w-55 p-4 mt-0! ml-10! text-2xl font-semibold"}>Hinzufügen</button></Link>
                 </div>
+
 
             </div>
         </>

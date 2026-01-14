@@ -9,16 +9,22 @@ type PlenumsCardProps={
 
 export default function PlenumsCard(props:Readonly<PlenumsCardProps>) {
     let style;
-    if (props.plenum.group === "ALLE") {
-        style = {backgroundColor: "#F1F7B5"};
-    } else if (props.plenum.group === "WERKSTATT") {
-        style = {backgroundColor: "#A8D1D1"};
-    } else if (props.plenum.group === "FEMINISTA") {
-        style = {backgroundColor: "#D8CDF0"};
-    } else if (props.plenum.group === "RSL") {
-        style = {backgroundColor: "#C6DEF1"};
-    } else if (props.plenum.group === "RSG") {
-        style = {backgroundColor: "#FFCBCB"};
+    switch (props.plenum.group){
+        case "ALLE":
+            style = {backgroundColor: "#F1F7B5"};
+            break;
+        case "WERKSTATT":
+            style = {backgroundColor: "#A8D1D1"};
+            break;
+        case "FEMINISTA":
+            style = {backgroundColor: "#D8CDF0"};
+            break;
+        case "RSL":
+            style = {backgroundColor: "#C6DEF1"};
+            break;
+        case "RSG":
+            style = {backgroundColor: "#FFCBCB"};
+            break;
     }
 
 
@@ -37,14 +43,33 @@ export default function PlenumsCard(props:Readonly<PlenumsCardProps>) {
     }
 
     return (
-                <div className={"plenumsCard"} key={props.plenum.id} style={style}>
-                    <p className={"cardGroup"}>{props.plenum.group}</p>
-                    <p>{(new Date(Date.parse(props.plenum.date))).toLocaleDateString("de-EU")}</p>
-                    <p>TOPS:</p>
-                    <ul>{props.plenum.tops.map((top,index) => (top? <li key={index}>{top}</li> : null))}</ul>
-                    <button onClick={confirmDelete}>Delete!</button>
-                    <button onClick={props.updateToggle}>Update!</button>
-                </div>
+        <>
+            <div className={"plenumsCard min-w-xs min-h-min px-5 py-5"} key={props.plenum.id} style={style}>
+                <fieldset className="flex flex-col items-start my-2">
+                    <legend className={"text-2xl mb-3"}>Details:</legend>
+                    <label></label>
+                    <div className={"cardGroup text-3xl pl-2"}>{props.plenum.group}</div>
+                    <label></label>
+                    <div className={"text-3xl pl-2"}>{(new Date(Date.parse(props.plenum.date))).toLocaleDateString("de-EU")}</div>
+
+                </fieldset>
+                <fieldset className=" my-2">
+                    <legend className={"text-2xl mt-3 mb-3"}>TOPs:</legend>
+                    <div>
+                        <ul className="list-disc pl-6 min-w-min">
+                        {props.plenum.tops.map((top,index) => (
+                            top? <li key={index} className={"text-justify max-w-3/4"}>{top}</li> : null))}
+                        </ul>
+                    </div>
+                </fieldset>
+                <fieldset className="flex flex-col items-start my-2">
+                    <div className="flex flex-row">
+                        <button onClick={confirmDelete}>Löschen!</button>
+                        <button onClick={props.updateToggle}>Ändern!</button>
+                    </div>
+                </fieldset>
+            </div>
+        </>
     )
 }
 

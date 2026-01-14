@@ -39,18 +39,18 @@ export default function PlenumsDetails() {
         <>
             <header className={"topBar"}><Navbar/></header>
         <div className={"mainContainer"}>
-           <div className={"rightContainer"}>
+           <div className={""}>
                <div>
                    {plenum ? <PlenumsCard plenum={plenum} updateToggle={updateToggle}/> : <div>loading..</div>}
                </div>
             </div>
-        </div>
-            <div id="updateDiv">
-                <h1>Update:</h1>
-                <div  className={"mainContainer"}>
+            <div id="updateDiv" className="">
+                <div  className={""}>
                     {plenum? <PlenumUpdateForm plenum={plenum} onUpdate={getPlenumById}/> : <div>loading..</div>}
                 </div>
             </div>
+        </div>
+
         </>
     )
 }

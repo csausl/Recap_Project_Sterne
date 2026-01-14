@@ -1,6 +1,8 @@
+@import "tailwindcss";
+
 :root{
     font-family: "Roboto Light", sans-serif;
-    background-color: whitesmoke;
+    background-color: #e3d5d5;
 }
 a {
     text-decoration: none;
@@ -11,7 +13,7 @@ h1{
 }
 
 button {
-    background-color: darkred;
+    background-color: #af3a3a;
     color: white;
     padding: 10px;
     margin: 10px;
