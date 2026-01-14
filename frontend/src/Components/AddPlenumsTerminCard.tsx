@@ -96,9 +96,9 @@ export default function AddPlenumsTerminCard() {
     }, [plenumsTerminDto]);
 
     return (
-        <>
+        <div className={"flex flex-col items-center"}>
             <label className="text-4xl font-semibold mt-5 mb-5">Plenumstermin hinzufügen</label>
-            <form className="formLayout" onSubmit={confirmUpdate}>
+            <form className="formLayout flex flex-row min-w-fit items-start" onSubmit={confirmUpdate}>
                 <fieldset className="formFieldSet">
                     <legend className="formLegend">Termin Details</legend>
                     <label className="formLabel">Dein Name</label>
@@ -154,7 +154,7 @@ export default function AddPlenumsTerminCard() {
                                 placeholder="Von wem?"
                                 onChange={event => handleTop(event, index)}
                             />
-                            <div className="flex flex-row items-center">
+                            <div className="flex flex-row items-center ">
                             <textarea className="formInput "
                                       id="topContent"
                                       name="topContent"
@@ -179,11 +179,10 @@ export default function AddPlenumsTerminCard() {
                         </button>
                     </div>
 
-
+                    <button type="submit">Abschicken</button>
+                    <button type="reset" onClick={resetForm}>Reset</button>
                 </fieldset>
-                <button type="submit">Submit</button>
-                <button type="reset" onClick={resetForm}>Reset</button>
             </form>
-        </>
+        </div>
     )
 }

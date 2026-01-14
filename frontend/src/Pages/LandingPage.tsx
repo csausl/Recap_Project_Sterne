@@ -3,25 +3,24 @@ import {Link} from "react-router-dom";
 export default function LandingPage(){
 
     return (
-        <>
-            <header className={"topBar"} ><h1>Du bist mein Stern</h1></header>
-            <ul className="flex-container">
+        <div className="flex flex-col items-center">
+            <header className={"topBar mb-10 mt-1"}>
+                <h1 className={"text-5xl pt-10 font-semibold"}>Hallo liebe Sterne</h1>
+            </header>
+            <div className="flex-container w-4/6">
                 <Link to={"/Infos"}>
-                    <li className="categoryCard">Infos</li>
+                    <div className="categoryCard px-8 py-10 text-center text-5xl font-bold content-center m-8">Infos</div>
                 </Link>
                 <Link to={"/Plena"}>
-                    <li className="categoryCard">Plena</li>
+                    <div className="categoryCard px-8 py-10 text-center text-5xl font-bold content-center m-8">Plena</div>
                 </Link>
                 <Link to={"/Werki"}>
-                    <li className="categoryCard">Werki</li>
-                </Link>
-                <Link to={"/Routen"}>
-                    <li className="categoryCard">Routen</li>
+                    <div className="categoryCard px-8 py-10 text-center text-5xl font-bold content-center m-8">Werki</div>
                 </Link>
                 <Link to={"/Events"}>
-                    <li className="categoryCard">Events</li>
+                    <div className="categoryCard px-8 py-10 text-center text-5xl font-bold content-center m-8">Events</div>
                 </Link>
-            </ul>
-        </>
+            </div>
+        </div>
     )
 }
